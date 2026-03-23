@@ -4,7 +4,7 @@ description: "SEAL Protocol Phase 2 — Antifragile Strategist. Takes verified P
 license: proprietary
 metadata:
   version: 2.0.0
-  author: Click Makers
+  author: Alex Makarski
   category: operations
   domain: audit-workflow
   updated: 2026-03-19

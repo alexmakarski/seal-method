@@ -4,7 +4,7 @@ description: "SEAL Protocol v2 — Cynefin Lens Selector. The single pre-lens ro
 license: proprietary
 metadata:
   version: 2.0.0
-  author: Click Makers
+  author: Alex Makarski
   category: operations
   domain: audit-workflow
   updated: 2026-03-19

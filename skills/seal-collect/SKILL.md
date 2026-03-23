@@ -4,7 +4,7 @@ description: "SEAL Protocol Phase 0: Data Collector. Reads the relevant domain c
 license: proprietary
 metadata:
   version: 1.0.0
-  author: Click Makers
+  author: Alex Makarski
   category: operations
   domain: audit-workflow
   updated: 2026-03-11
