@@ -66,4 +66,4 @@ The answer becomes the axis everything gets ranked against. Revenue, time, healt
 
 ## License
 
-Proprietary. (c) Click Makers.
+MIT — see [LICENSE](LICENSE).
