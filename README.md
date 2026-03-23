@@ -20,7 +20,7 @@ Every phase is role-locked. The auditor can't recommend. The strategist can't in
 ## What's inside
 
 - **15 skills** that install into Claude Code
-- **8 domain checklists** (dental, Google Ads, tree service, agency, tax, marketing data, professional services, membership community)
+- **5 domain checklists** (tree service, agency, tax discovery, professional services, membership community)
 - **6 strategic lenses** so the same data gets analyzed through the right framework for the problem shape
 - **3 post-lens specialists** (TRIZ for contradictions, Root Cause for unexplained symptoms, Real Options for high-stakes decisions)
 
