@@ -1,4 +1,4 @@
-# SEAL Method
+# SEAL Method v1.0.3
 
 **Strategic Evidence Authority Ladder**
 
