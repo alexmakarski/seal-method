@@ -54,6 +54,20 @@ Every SEAL engagement starts with one question: **"What does winning look like?"
 
 The answer becomes the axis everything gets ranked against. Revenue, time, health, speed. The Pareto Map estimates each finding's impact on that outcome, ranks them all, and draws a line. Above the line: the vital few. Below: noise.
 
+## How SEAL relates to SONAR
+
+SEAL and SONAR are sibling products with different epistemic positions:
+
+| | SEAL | SONAR |
+|---|------|-------|
+| **Position** | Outside-in | Inside-out |
+| **Input** | Submitted evidence | Direct system observation |
+| **Trust model** | Trust nothing, verify everything | Trust the data, question the patterns |
+| **Core question** | "What's actually true here?" | "Where is the margin going?" |
+| **Output** | Verified findings + strategic recommendations | Automation/augmentation roadmap |
+
+SEAL is a forensic auditor working from documents. SONAR is an operational diagnostician with direct access to the patient. They can inform each other but neither requires the other.
+
 ## Read more
 
 [SEAL-Method.md](SEAL-Method.md) is the full methodology document covering the architecture, all 10 strategic lenses and specialists, failure modes SEAL prevents, and applications to personal life.
