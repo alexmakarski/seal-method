@@ -68,6 +68,8 @@ SEAL and SONAR are sibling products with different epistemic positions:
 
 SEAL is a forensic auditor working from documents. SONAR is an operational diagnostician with direct access to the patient. They can inform each other but neither requires the other.
 
+**[SONAR on GitHub](https://github.com/alexmakarski/sonar-method/)**
+
 ## Read more
 
 [SEAL-Method.md](SEAL-Method.md) is the full methodology document covering the architecture, all 10 strategic lenses and specialists, failure modes SEAL prevents, and applications to personal life.
