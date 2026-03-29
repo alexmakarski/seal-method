@@ -1,13 +1,13 @@
 ---
 name: seal-run
-description: "SEAL Protocol v2 Orchestrator. Chains all SEAL phases automatically with critic review after each phase and human approval gates between phases. Runs the full audit workflow: collect → audit → review → lens select → strategy → specialists (optional) → draft → review. Can start from any phase if earlier phases are already complete. Trigger phrases: 'seal-run', 'run the full audit', 'run seal end to end'."
+description: "SEAL Protocol v2 Orchestrator. Chains all SEAL phases automatically with critic review after each phase and human approval gates between phases. Runs the full audit workflow: collect -> audit -> review -> lens select -> strategy -> specialists (optional) -> draft -> review. Can start from any phase if earlier phases are already complete. Trigger phrases: 'seal-run', 'run the full audit', 'run seal end to end'."
 license: proprietary
 metadata:
   version: 2.0.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow
-  updated: 2026-03-19
+  updated: 2026-03-28
 ---
 
 # SEAL Protocol v2 — Orchestrator
@@ -131,13 +131,13 @@ Execute the `/seal-audit` logic:
 
 **Immediately after Phase 1 completes, run the critic review (do NOT wait for user input):**
 
-Execute the `/seal-review` logic for Phase 1:
-- Citation check
-- Interpretation leak detection
-- Completeness check against domain checklist
-- Contradiction check
-- Confidence level validation
-- Save review to `[engagement folder]/SEAL-[subject]-phase1-review.md`
+Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
+1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md`
+2. Phase identifier: "Phase 1"
+3. Engagement metadata: subject, domain, desired outcome, scope boundaries
+4. Domain checklist (if one exists)
+
+The agent will run its Phase 1 checks and save the review to `[engagement folder]/SEAL-[subject]-phase1-review.md`.
 
 Then present both outputs to the user:
 
@@ -232,13 +232,12 @@ Execute the selected strategy skill's logic fully — each lens has its own proc
 
 **Immediately after Phase 2 completes, run the critic review:**
 
-Execute the `/seal-review` logic for Phase 2:
-- New finding check
-- Prioritization quality check (or equivalent for the chosen lens)
-- Evidence trail check
-- Decision point check
-- Gap acknowledgment check
-- Save review to `[engagement folder]/SEAL-[subject]-phase2-review.md`
+Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
+1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md` (contains both Phase 1 and Phase 2)
+2. Phase identifier: "Phase 2"
+3. Engagement metadata: subject, domain, desired outcome, scope boundaries, chosen lens
+
+The agent will run its Phase 2 checks and save the review to `[engagement folder]/SEAL-[subject]-phase2-review.md`.
 
 Then present both outputs:
 
@@ -317,8 +316,11 @@ When the user selects specialists to run:
 For each specialist run:
 1. Execute the specialist skill's logic fully, passing it the specific items flagged by Phase 2
 2. Append output to the working document as an addendum (do NOT replace Phase 2 content)
-3. Run the `/seal-review` critic on the specialist output
-4. Save specialist review to `[engagement folder]/SEAL-[subject]-phase2b-[specialist]-review.md`
+3. Spawn the `seal-review` agent to critique the specialist output. Pass it:
+   - The working document (with specialist addendum appended)
+   - Phase identifier: "Phase 2b"
+   - Engagement metadata: subject, domain, desired outcome, which specialist(s) ran
+4. The agent will save the specialist review to `[engagement folder]/SEAL-[subject]-phase2b-[specialist]-review.md`
 
 Update state to reflect specialist runs (e.g., "Phase 2 + TRIZ" or "Phase 2b: TRIZ, Root Cause").
 
@@ -366,13 +368,13 @@ Execute the `/seal-draft` logic:
 
 **Immediately after Phase 3 completes, run the critic review:**
 
-Execute the `/seal-review` logic for Phase 3:
-- Source tracing
-- Scope check
-- Completeness check
-- Consistency check
-- Tone and audience check
-- Save review to `[engagement folder]/SEAL-[subject]-phase3-review.md`
+Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
+1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md` (all phases)
+2. All deliverable files produced in Phase 3
+3. Phase identifier: "Phase 3"
+4. Engagement metadata: subject, domain, desired outcome, scope boundaries
+
+The agent will run its Phase 3 checks and save the review to `[engagement folder]/SEAL-[subject]-phase3-review.md`.
 
 Then present:
 
