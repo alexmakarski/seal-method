@@ -1,7 +1,7 @@
 ---
 name: seal-review
 description: "SEAL Protocol Critic. Runs in isolation to review SEAL phase outputs with fresh eyes. Catches findings without citations, interpretations disguised as facts, missing prioritization, false specialist flags, invented data in deliverables, and other phase violations. Spawned by the seal-run orchestrator after each phase."
-version: 2.1.0
+version: 2.0.0
 author: Alex Makarski
 ---
 

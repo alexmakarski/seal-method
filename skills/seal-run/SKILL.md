@@ -3,7 +3,7 @@ name: seal-run
 description: "SEAL Protocol v2 Orchestrator. Chains all SEAL phases automatically with critic review after each phase and human approval gates between phases. Runs the full audit workflow: collect -> audit -> review -> lens select -> strategy -> specialists (optional) -> draft -> review. Can start from any phase if earlier phases are already complete. Trigger phrases: 'seal-run', 'run the full audit', 'run seal end to end'."
 license: proprietary
 metadata:
-  version: 2.1.0
+  version: 2.0.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow
