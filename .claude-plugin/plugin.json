@@ -1,7 +1,7 @@
 {
   "name": "seal",
   "description": "SEAL Protocol: Strategic Evidence Authority Ladder — multi-phase audit method that finds the vital few things that matter and backs them with verified evidence.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": {
     "name": "Alex Makarski"
   },
