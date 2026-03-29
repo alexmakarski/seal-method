@@ -60,58 +60,58 @@ Use this checklist alongside `/seal-audit` when auditing a media buying, analyti
 ## Metrics to Extract
 
 ### Financial Health
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Annual revenue | Total agency revenue (not media spend) | Context-dependent |
-| Revenue per employee | Agency revenue ÷ FTE count | $150,000-250,000+ |
-| Gross margin | (Revenue - direct delivery costs) ÷ Revenue | 50-70% |
-| Net profit margin | Net income ÷ Revenue | 15-25% |
-| Effective hourly rate | Revenue ÷ Total billable hours delivered | $100-250+ depending on market |
-| Payroll ratio | Total people cost ÷ Revenue | 45-55% |
-| Tool/software cost ratio | All tools ÷ Revenue | 5-10% |
-| Client acquisition cost | Sales + marketing cost ÷ New clients won | Context-dependent |
-| Revenue per client | Average monthly retainer × 12 | Context-dependent |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Annual revenue | Total agency revenue (not media spend) | Baseline for all ratio calculations; trend matters more than absolute number |
+| Revenue per employee | Agency revenue ÷ FTE count | Efficiency indicator -- low values suggest overstaffing or underpricing |
+| Gross margin | (Revenue - direct delivery costs) ÷ Revenue | Reveals whether delivery model is sustainable before overhead |
+| Net profit margin | Net income ÷ Revenue | True profitability after all costs; shows how much of each dollar is kept |
+| Effective hourly rate | Revenue ÷ Total billable hours delivered | Exposes the real rate earned vs. what the agency thinks it charges |
+| Payroll ratio | Total people cost ÷ Revenue | Largest cost center for most agencies; rising ratio with flat revenue signals trouble |
+| Tool/software cost ratio | All tools ÷ Revenue | Creeping tool spend is a silent margin killer; compare to value delivered |
+| Client acquisition cost | Sales + marketing cost ÷ New clients won | Must be recoverable within the first few months of a retainer |
+| Revenue per client | Average monthly retainer × 12 | Shows whether the agency has enough high-value clients or is spread thin on small ones |
 
 ### Client Portfolio Health
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Client count | Total active clients | Context-dependent |
-| Client concentration | Top client as % of revenue | Under 20% for any single client |
-| Top 3 concentration | Top 3 clients as % of revenue | Under 40% |
-| Average client tenure | Mean months of active clients | 12+ months is healthy |
-| Monthly churn rate | Clients lost ÷ Total clients (monthly) | Under 3% monthly / 25% annual |
-| Net revenue retention | (Revenue from existing clients this year) ÷ (Revenue from same clients last year) | 100%+ means growing within accounts |
-| Average retainer value | Mean monthly retainer across clients | Context-dependent |
-| Retainer distribution | How many clients at each price tier | Healthy = pyramid, not barbell |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Client count | Total active clients | Context for all per-client metrics; raw count alone means little |
+| Client concentration | Top client as % of revenue | High concentration means losing one client can destabilize the business |
+| Top 3 concentration | Top 3 clients as % of revenue | Reveals whether revenue base is diversified or dangerously top-heavy |
+| Average client tenure | Mean months of active clients | Longer tenure suggests satisfaction and stickiness; short tenure flags churn risk |
+| Monthly churn rate | Clients lost ÷ Total clients (monthly) | The rate at which the client base is eroding; compounds fast over a year |
+| Net revenue retention | (Revenue from existing clients this year) ÷ (Revenue from same clients last year) | Above 100% means growing within accounts; below 100% means shrinking even before churn |
+| Average retainer value | Mean monthly retainer across clients | Indicates market positioning and whether the agency attracts high- or low-value work |
+| Retainer distribution | How many clients at each price tier | Shape of the distribution matters -- a few whales plus many tiny clients is fragile |
 
 ### Team Efficiency
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Clients per account manager | Client count ÷ AM headcount | 5-10 depending on complexity |
-| Clients per media buyer | Client count ÷ Buyer headcount | 5-8 depending on spend level |
-| Utilization rate | Billable hours ÷ Available hours | 70-80% |
-| Delivery cost per client | Direct labor + tools for client ÷ Retainer | Under 60% of retainer |
-| Employee tenure | Average months of employment | 18+ months is healthy |
-| Turnover rate | Employees who left ÷ Average headcount (annual) | Under 20% |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Clients per account manager | Client count ÷ AM headcount | Too many clients per person degrades service quality and causes burnout |
+| Clients per media buyer | Client count ÷ Buyer headcount | Overloaded buyers miss optimization opportunities and make mistakes |
+| Utilization rate | Billable hours ÷ Available hours | Shows how much capacity is spent on revenue-generating work vs. overhead |
+| Delivery cost per client | Direct labor + tools for client ÷ Retainer | If delivery cost exceeds retainer value, the client is unprofitable |
+| Employee tenure | Average months of employment | Short tenure means constant retraining and knowledge loss |
+| Turnover rate | Employees who left ÷ Average headcount (annual) | High turnover disrupts client relationships and increases hiring costs |
 
 ### Sales Pipeline
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Proposals per month | New proposals sent | Context-dependent |
-| Close rate | Proposals won ÷ Proposals sent | 25-40% |
-| Average sales cycle | Days from first contact to signed | 30-90 days |
-| Pipeline value | Total $ of active proposals | 3x+ monthly revenue target |
-| Lead-to-proposal rate | Proposals ÷ Inbound leads | Context-dependent |
-| New client revenue vs. churn | Monthly new revenue added vs. lost | Positive = growing |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Proposals per month | New proposals sent | Volume indicator for sales activity; low volume caps growth regardless of close rate |
+| Close rate | Proposals won ÷ Proposals sent | Reveals sales effectiveness and whether the agency is qualifying leads before proposing |
+| Average sales cycle | Days from first contact to signed | Long cycles tie up resources and delay revenue; short cycles may indicate commodity positioning |
+| Pipeline value | Total $ of active proposals | Shows whether there is enough pending business to sustain growth targets |
+| Lead-to-proposal rate | Proposals ÷ Inbound leads | Low rate may mean poor lead quality or a bottleneck in the qualification process |
+| New client revenue vs. churn | Monthly new revenue added vs. lost | The only metric that shows whether the agency is actually growing or just treading water |
 
 ### Media Management (if applicable)
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Total media spend managed | Sum of all client ad spend | Context-dependent |
-| Management fee as % of spend | Agency fee ÷ Media spend managed | 10-20% (declining with scale) |
-| Revenue per dollar managed | Agency revenue ÷ Total spend managed | Context-dependent |
-| Client ROAS distribution | How many clients are above/below target | Context-dependent |
-| Underperforming accounts | Clients consistently below KPI targets | Flag count and duration |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Total media spend managed | Sum of all client ad spend | Scale indicator; also reveals exposure if spend drops across clients simultaneously |
+| Management fee as % of spend | Agency fee ÷ Media spend managed | Shows whether fee structure scales with effort or creates margin compression at higher spend levels |
+| Revenue per dollar managed | Agency revenue ÷ Total spend managed | Reveals how efficiently the agency monetizes the spend it manages |
+| Client ROAS distribution | How many clients are above/below target | Average ROAS hides underperformers; distribution shows the real picture |
+| Underperforming accounts | Clients consistently below KPI targets | Chronic underperformers are churn risk and consume disproportionate management time |
 
 ---
 

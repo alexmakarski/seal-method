@@ -3,11 +3,11 @@ name: seal-collect
 description: "SEAL Protocol Phase 0: Data Collector. Reads the relevant domain checklist and produces a specific, actionable data request list to send to the client or pull internally. Runs BEFORE the audit — ensures the right data is in hand before analysis begins. Trigger phrases: 'seal-collect', 'what data do we need', 'data request', 'prep for audit'."
 license: proprietary
 metadata:
-  version: 1.0.0
+  version: 2.0.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow
-  updated: 2026-03-11
+  updated: 2026-03-29
 ---
 
 # SEAL Protocol — Phase 0: Data Collector
@@ -46,6 +46,36 @@ Ask the user:
 - Is there a specific focus area (e.g., "we think there's a profitability problem" vs. "full audit")?
 
 If data is already partially available, check it off and focus the request on what's missing.
+
+### Step 2.5: Research Domain Benchmarks
+
+Before producing the data request, research current industry benchmarks for the domain being audited. These become part of the collected data -- not assumptions baked into the checklist.
+
+**What to research:**
+- Industry-standard financial ratios for this business type (margins, cost ratios, efficiency metrics)
+- Published survey data from industry associations, research firms, or trade publications
+- Platform-specific benchmarks where relevant (e.g., Google Ads benchmarks for ad account audits)
+
+**Requirements:**
+- Every benchmark must cite a specific source (publication, survey, year)
+- Generic "industry average" without attribution is not a benchmark -- it's a guess
+- Benchmarks older than 2 years should be flagged as potentially stale
+- If no credible benchmarks exist for a metric, say so explicitly rather than inventing one
+
+**Output:**
+Save a benchmark reference document to the engagement folder: `SEAL-[subject]-benchmarks.md`
+
+```markdown
+# Industry Benchmarks: [Domain / Business Type]
+**Researched:** [YYYY-MM-DD]
+**Sources:** [List of publications, surveys, reports consulted]
+
+| Metric | Benchmark | Source | Year | Confidence |
+|--------|-----------|--------|------|------------|
+| [Metric name] | [Value or range] | [Specific source] | [Year published] | [HIGH if primary research / MEDIUM if secondary / LOW if dated or proxy] |
+```
+
+This document is used by Phase 1 to contextualize findings. It is NOT baked into the domain checklist because benchmarks change and must be sourced fresh for each engagement.
 
 ### Step 3: Produce the Data Request
 

@@ -85,49 +85,49 @@ Use this checklist alongside `/seal-audit` when auditing a membership community,
 ## Metrics to Extract
 
 ### Financial Health
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| MRR | Monthly recurring revenue (normalize annual to monthly) | Context-dependent |
-| ARR | MRR × 12 | Context-dependent |
-| Revenue per member | MRR ÷ Active members | Context-dependent |
-| Gross margin | (Revenue - direct delivery costs) ÷ Revenue | 70-85%+ |
-| Net profit margin | Net income ÷ Revenue | 30-50%+ (community businesses should be high margin) |
-| LTV | Average revenue per member × average lifetime in months | Should be 3x+ CAC |
-| LTV:CAC ratio | Lifetime value ÷ Customer acquisition cost | 3:1 minimum, 5:1+ healthy |
-| Payback period | CAC ÷ Monthly revenue per member | Under 3 months ideal |
-| Non-membership revenue % | Other revenue ÷ Total revenue | Flag if over 50% — is this really a membership business? |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| MRR | Monthly recurring revenue (normalize annual to monthly) | The heartbeat metric for any subscription business; trend is everything |
+| ARR | MRR x 12 | Annualized view useful for valuation and planning; but only meaningful if MRR is stable or growing |
+| Revenue per member | MRR ÷ Active members | Shows average monetization per member; declining ARPM signals pricing pressure or tier migration down |
+| Gross margin | (Revenue - direct delivery costs) ÷ Revenue | Community businesses have low COGS; a low gross margin here means something is wrong with the delivery model |
+| Net profit margin | Net income ÷ Revenue | After all costs; membership businesses should retain a significant share of revenue as profit |
+| LTV | Average revenue per member x average lifetime in months | Determines how much can be spent to acquire members and still profit; the foundation of unit economics |
+| LTV:CAC ratio | Lifetime value ÷ Customer acquisition cost | Shows whether acquisition spending is sustainable; ratio must justify the investment in growth |
+| Payback period | CAC ÷ Monthly revenue per member | How many months before an acquired member becomes profitable; shorter is better for cash flow |
+| Non-membership revenue % | Other revenue ÷ Total revenue | If most revenue comes from non-membership sources, question whether this is truly a membership business |
 
 ### Growth
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Monthly net member growth | New members - churned members | Positive = growing |
-| Monthly growth rate | Net new ÷ Starting count | 5-10% monthly is strong |
-| New members per month | Raw count, trailing 3-month average | Context-dependent |
-| Acquisition cost | Total acquisition spend ÷ New members | Must be < LTV/3 |
-| Conversion rate (visitor → member) | New members ÷ Sales page visitors | 2-10% depending on traffic quality |
-| Email list conversion | Members ÷ Total list size | Context-dependent |
-| Referral rate | % of new members from referrals | Higher = healthier |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Monthly net member growth | New members - churned members | The only growth number that matters; gross additions mean nothing if churn eats them |
+| Monthly growth rate | Net new ÷ Starting count | Shows acceleration or deceleration of growth; compounding effect makes small differences significant |
+| New members per month | Raw count, trailing 3-month average | Volume of new members entering the funnel; declining trend signals acquisition problems |
+| Acquisition cost | Total acquisition spend ÷ New members | Must be recoverable within a fraction of lifetime value to be sustainable |
+| Conversion rate (visitor to member) | New members ÷ Sales page visitors | Shows how well the offer converts interest into commitment; low rate means leaky sales page or poor traffic quality |
+| Email list conversion | Members ÷ Total list size | Reveals untapped potential in the existing audience; large unconverted list is an opportunity or a positioning problem |
+| Referral rate | % of new members from referrals | Organic referrals are the cheapest and stickiest growth channel; high rate signals genuine member satisfaction |
 
 ### Engagement
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| DAU/MAU ratio | Daily active ÷ Monthly active | 20-30%+ is strong for community |
-| WAU/MAU ratio | Weekly active ÷ Monthly active | 40-60%+ |
-| Posts per active member per month | Community contributions ÷ Active members | Context-dependent |
-| Event attendance rate | Attendees ÷ Registered (or ÷ Total members) | 15-30% of membership is healthy |
-| Content completion rate | Finished ÷ Started (for courses/programs) | 30%+ |
-| Ghost member rate | Zero-activity members ÷ Total members | Under 30% is healthy; over 50% is a churn time bomb |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| DAU/MAU ratio | Daily active ÷ Monthly active | Measures habit strength; higher ratio means the community is part of members' daily routine |
+| WAU/MAU ratio | Weekly active ÷ Monthly active | Weekly engagement is more realistic than daily for most communities; shows consistent usage patterns |
+| Posts per active member per month | Community contributions ÷ Active members | Indicates whether members contribute or just consume; contribution drives community value |
+| Event attendance rate | Attendees ÷ Registered (or ÷ Total members) | Shows whether live events are valued; low attendance questions the effort invested in producing them |
+| Content completion rate | Finished ÷ Started (for courses/programs) | Low completion suggests content is too long, not relevant, or not engaging enough |
+| Ghost member rate | Zero-activity members ÷ Total members | Paying but disengaged members are a churn time bomb; they will cancel eventually |
 
 ### Retention
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Monthly churn rate | Cancellations ÷ Starting member count | Under 5% monthly |
-| Annual churn rate | 1 - (1 - monthly churn)^12 | Under 40% annual |
-| 90-day retention | % of cohort still active at 90 days | 70%+ |
-| 12-month retention | % of cohort still active at 12 months | 40%+ |
-| Average member lifetime | 1 ÷ Monthly churn rate (in months) | 12+ months |
-| Involuntary churn rate | Failed payments not recovered ÷ Total members | Under 2% monthly |
-| Net revenue retention | Revenue from existing members this month ÷ Same members last month | 100%+ means upsell > churn |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Monthly churn rate | Cancellations ÷ Starting member count | The single most important metric for subscription health; small monthly rates compound into large annual losses |
+| Annual churn rate | 1 - (1 - monthly churn)^12 | Annualized view reveals the true scale of member loss that monthly numbers can obscure |
+| 90-day retention | % of cohort still active at 90 days | Early retention reveals whether onboarding delivers on the promise that got members to join |
+| 12-month retention | % of cohort still active at 12 months | Long-term retention shows whether the community delivers ongoing value beyond the initial excitement |
+| Average member lifetime | 1 ÷ Monthly churn rate (in months) | Directly determines LTV; short lifetimes cap how much can be spent on acquisition |
+| Involuntary churn rate | Failed payments not recovered ÷ Total members | Silent revenue leak from card failures; often fixable with better dunning and payment recovery |
+| Net revenue retention | Revenue from existing members this month ÷ Same members last month | Above 100% means upsells and upgrades outpace downgrades and churn; below 100% means the base is shrinking |
 
 ---
 

@@ -60,58 +60,58 @@ Use this checklist alongside `/seal-audit` when auditing a tree service or arbor
 ## Metrics to Extract
 
 ### Financial Health
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Annual revenue | Total collected revenue | Context-dependent |
-| Gross profit margin | (Revenue - direct job costs) ÷ Revenue | 50-65% |
-| Net profit margin | Net income ÷ Revenue | 10-20% |
-| Labor cost ratio | Total labor (incl. WC, payroll taxes) ÷ Revenue | 25-35% |
-| Equipment cost ratio | All equipment costs ÷ Revenue | 10-15% |
-| Insurance cost ratio | All insurance ÷ Revenue | 5-10% |
-| Marketing cost ratio | Marketing spend ÷ Revenue | 5-10% |
-| Revenue per crew per day | Daily revenue ÷ Number of crews working | $2,000-5,000+ |
-| Revenue per employee | Annual revenue ÷ Full-time employees | $100,000-200,000+ |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Annual revenue | Total collected revenue | Baseline for all ratio calculations; trend over time is more telling than the number itself |
+| Gross profit margin | (Revenue - direct job costs) ÷ Revenue | Shows whether jobs are priced to cover direct costs with room for overhead and profit |
+| Net profit margin | Net income ÷ Revenue | True bottom-line profitability after all costs; exposes whether revenue growth actually produces profit |
+| Labor cost ratio | Total labor (incl. WC, payroll taxes) ÷ Revenue | Largest controllable cost for most tree services; rising ratio signals pricing or efficiency problems |
+| Equipment cost ratio | All equipment costs ÷ Revenue | Reveals whether equipment investment is proportionate to revenue it generates |
+| Insurance cost ratio | All insurance ÷ Revenue | Necessary cost of doing business; unusually high ratios may indicate claims history or inadequate shopping |
+| Marketing cost ratio | Marketing spend ÷ Revenue | Shows investment in growth; too low may mean over-reliance on referrals, too high may mean inefficient channels |
+| Revenue per crew per day | Daily revenue ÷ Number of crews working | Core productivity metric -- indicates whether crews are doing enough high-value work each day |
+| Revenue per employee | Annual revenue ÷ Full-time employees | Efficiency indicator across the whole team including office staff |
 
 ### Sales Pipeline
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Estimates given per month | Count of proposals/bids sent | Context-dependent |
-| Close rate | Jobs won ÷ Estimates given | 40-60% |
-| Average job value | Total revenue ÷ Total jobs | Market-dependent |
-| Average estimate value | Total estimated ÷ Total estimates | Context-dependent |
-| Time from estimate to decision | Days between estimate and yes/no | Under 7 days ideal |
-| Outstanding estimate value | Total $ of unsold proposals | Pipeline metric |
-| Revenue per lead | Revenue ÷ Total leads (not just estimates) | Context-dependent |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Estimates given per month | Count of proposals/bids sent | Volume indicator; too few estimates means the funnel is starved regardless of close rate |
+| Close rate | Jobs won ÷ Estimates given | Shows sales effectiveness; most owners overestimate their actual close rate |
+| Average job value | Total revenue ÷ Total jobs | Indicates the kind of work being sold; low values may mean too many small jobs eating capacity |
+| Average estimate value | Total estimated ÷ Total estimates | Compare to average job value to see if the business is closing its bigger or smaller bids |
+| Time from estimate to decision | Days between estimate and yes/no | Long delays lose jobs; fast follow-up and clear proposals shorten this |
+| Outstanding estimate value | Total $ of unsold proposals | Money sitting on the table; reveals follow-up discipline and pipeline health |
+| Revenue per lead | Revenue ÷ Total leads (not just estimates) | Full-funnel efficiency from initial inquiry to collected revenue |
 
 ### Job Mix
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Revenue by service type | Removal, trimming, stump grinding, emergency, PHC, consulting | Context-dependent |
-| Job count by service type | Volume distribution across services | Context-dependent |
-| Average value by service type | Which services are highest-value | Context-dependent |
-| Emergency/storm work % | Emergency revenue ÷ Total revenue | Varies — high % = weather-dependent risk |
-| Recurring revenue % | PHC contracts, maintenance agreements ÷ Total | Higher is more stable |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Revenue by service type | Removal, trimming, stump grinding, emergency, PHC, consulting | Shows where the money actually comes from vs. where the owner thinks it comes from |
+| Job count by service type | Volume distribution across services | High job count with low revenue means lots of small jobs consuming capacity |
+| Average value by service type | Which services are highest-value | Identifies which services are worth pursuing more and which may not justify the effort |
+| Emergency/storm work % | Emergency revenue ÷ Total revenue | High emergency dependence means revenue swings with weather -- unpredictable and hard to plan around |
+| Recurring revenue % | PHC contracts, maintenance agreements ÷ Total | Recurring revenue stabilizes cash flow and increases business value; most tree services have too little |
 
 ### Efficiency
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Jobs per crew per day | Average completed jobs per crew | 2-4 depending on job type |
-| Crew utilization | Billable hours ÷ Available hours | 75-85% |
-| Drive time ratio | Drive time ÷ Total work time | Under 25% |
-| Estimate-to-job conversion time | Average days from estimate to completed job | Context-dependent |
-| Seasonal revenue distribution | Monthly revenue as % of annual | Expect peaks in spring/fall |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Jobs per crew per day | Average completed jobs per crew | Core throughput metric; low numbers may indicate poor scheduling, long drive times, or underpriced large jobs |
+| Crew utilization | Billable hours ÷ Available hours | Shows how much of the paid day is spent on revenue-generating work vs. windshield time and downtime |
+| Drive time ratio | Drive time ÷ Total work time | Excessive drive time is unbillable and eats margins; indicates service area or routing problems |
+| Estimate-to-job conversion time | Average days from estimate to completed job | Long gaps mean delayed revenue and scheduling inefficiency |
+| Seasonal revenue distribution | Monthly revenue as % of annual | Reveals how dependent the business is on peak months and how severe the slow season cash crunch gets |
 
 ### Marketing Efficiency
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Cost per lead | Marketing spend ÷ Total leads | $50-200 depending on market |
-| Cost per booked job | Marketing spend ÷ Jobs won | $100-400 depending on market |
-| Customer acquisition cost | Total sales + marketing cost ÷ New customers | Context-dependent |
-| Lifetime customer value | Average revenue per customer over relationship | Context-dependent |
-| Google review count | Total reviews | 50+ to be competitive, 100+ is strong |
-| Google review rating | Average star rating | 4.7+ |
-| Review velocity | New reviews per month | 4+ |
-| Lead source distribution | % of leads from each channel | Context-dependent |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Cost per lead | Marketing spend ÷ Total leads | Reveals whether marketing channels are cost-effective; varies widely by market and channel |
+| Cost per booked job | Marketing spend ÷ Jobs won | More useful than cost per lead because it accounts for close rate -- the true cost of getting work |
+| Customer acquisition cost | Total sales + marketing cost ÷ New customers | Full cost of winning a customer including sales time; must be justifiable against lifetime value |
+| Lifetime customer value | Average revenue per customer over relationship | Determines how much can be spent to acquire a customer and still profit |
+| Google review count | Total reviews | Social proof that directly affects click-through rate in local search results |
+| Google review rating | Average star rating | Prospects filter by rating; small differences in average rating have outsized impact on lead volume |
+| Review velocity | New reviews per month | Stale review profiles look inactive; consistent new reviews signal an active, trusted business |
+| Lead source distribution | % of leads from each channel | Over-reliance on one channel is a risk; diversification provides stability |
 
 ---
 
@@ -147,14 +147,14 @@ Use this checklist alongside `/seal-audit` when auditing a tree service or arbor
 
 | Common Claim | What Data Would Verify It |
 |-------------|--------------------------|
-| "We close about 70% of our estimates" | Actual close rate from CRM/estimate log — most tree services close 35-50% |
+| "We close about 70% of our estimates" | Actual close rate from CRM/estimate log -- actual close rates are typically lower than owners estimate |
 | "We're the busiest we've ever been" | Revenue per crew per day, total job count — busy ≠ profitable |
 | "We don't need marketing, it's all word of mouth" | Lead source tracking — and is new customer count growing, flat, or declining? |
 | "Our prices are competitive" | Market rate comparison for common services — are they pricing for profit or pricing to stay busy? |
-| "We can't raise prices, we'll lose jobs" | Test data — have they actually tried raising prices? What happened to close rate? Many tree services underprice by 20-30% |
-| "We need another crew" | Current crew utilization — if existing crews aren't at 80%+ utilization, another crew won't help |
-| "Insurance is killing us" | Insurance as % of revenue benchmarked against 5-10% — is it actually high or does it feel high? |
-| "Our guys are good, they're just slow" | Production per crew per day measured against job scope — is it a crew problem or a scheduling/routing problem? |
+| "We can't raise prices, we'll lose jobs" | Test data -- have they actually tried raising prices? What happened to close rate? Many tree services underprice significantly without realizing it |
+| "We need another crew" | Current crew utilization -- if existing crews are not fully utilized, another crew will not help |
+| "Insurance is killing us" | Insurance as % of revenue compared to industry data -- is it actually high or does it just feel high? |
+| "Our guys are good, they're just slow" | Production per crew per day measured against job scope -- is it a crew problem or a scheduling/routing problem? |
 | "We make good money on removals but trimming doesn't pay" | Profit margin by service type — removals have higher risk and equipment cost. Are those factored in? |
 | "Storm work is great for us" | Emergency revenue vs. cost of readiness + opportunity cost of cancelled scheduled work |
 

@@ -68,59 +68,59 @@ Use this checklist alongside `/seal-audit` when auditing a professional services
 ## Metrics to Extract
 
 ### Financial Health
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Annual revenue | Total firm revenue | Context-dependent |
-| Revenue per practitioner | Revenue ÷ Practitioner FTE | $200K-500K+ depending on practice |
-| Revenue per employee (all) | Revenue ÷ Total FTE | $150K-300K+ |
-| Gross margin | (Revenue - direct delivery costs) ÷ Revenue | 50-70% |
-| Net profit margin | Net income ÷ Revenue | 20-35% |
-| Effective hourly rate | Collected revenue ÷ Total hours worked (not just billed) | Must exceed cost by 3x+ |
-| Realization rate | Billed amount ÷ Standard rate × Hours | 85-95% |
-| Collection rate | Collected ÷ Billed | 90-98% |
-| Billing realization × collection | Combined rate (the real multiplier) | 80-90% |
-| Average matter value | Revenue ÷ Number of matters/engagements | Context-dependent |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Annual revenue | Total firm revenue | Baseline for all ratio calculations; trend direction matters most |
+| Revenue per practitioner | Revenue ÷ Practitioner FTE | Core productivity metric -- shows whether practitioners are generating enough to justify their cost |
+| Revenue per employee (all) | Revenue ÷ Total FTE | Includes support staff; low values suggest overhead bloat or insufficient leverage |
+| Gross margin | (Revenue - direct delivery costs) ÷ Revenue | Shows whether the service delivery model sustains itself before overhead |
+| Net profit margin | Net income ÷ Revenue | True profitability; professional services should be high-margin given low COGS |
+| Effective hourly rate | Collected revenue ÷ Total hours worked (not just billed) | Exposes the real rate earned after write-offs, discounts, and unbilled time |
+| Realization rate | Billed amount ÷ Standard rate x Hours | Gap between standard rate and what actually gets billed; low realization means the rate card is fiction |
+| Collection rate | Collected ÷ Billed | Gap between what's billed and what's collected; low collection means cash flow lags revenue |
+| Billing realization x collection | Combined rate (the real multiplier) | The compounding effect of both leaks together; this is the number that actually determines profitability |
+| Average matter value | Revenue ÷ Number of matters/engagements | Indicates whether the firm is doing high-value strategic work or high-volume commodity work |
 
 ### Client Acquisition
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| New clients per month | Raw count, trailing average | Context-dependent |
-| Client acquisition cost | Total marketing + sales cost ÷ New clients | Must be < LTV/3 |
-| Inquiry-to-client conversion rate | New clients ÷ Total inquiries | 20-40% |
-| Average time to close | Days from first inquiry to signed engagement | Context-dependent |
-| Cost per lead | Marketing spend ÷ Qualified inquiries | Context-dependent |
-| Lead source distribution | % of clients from each channel | Diversified = healthy |
-| Website conversion rate | Inquiries ÷ Website visitors | 2-5% for professional services |
-| Referral rate | % of new clients from referrals | Context-dependent |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| New clients per month | Raw count, trailing average | Growth engine indicator; declining trend signals trouble regardless of current revenue |
+| Client acquisition cost | Total marketing + sales cost ÷ New clients | Must be recoverable within a fraction of the client's lifetime value to be sustainable |
+| Inquiry-to-client conversion rate | New clients ÷ Total inquiries | Reveals intake process effectiveness and lead quality; low rate may mean poor qualification or slow follow-up |
+| Average time to close | Days from first inquiry to signed engagement | Long cycles delay revenue and signal friction in the intake process |
+| Cost per lead | Marketing spend ÷ Qualified inquiries | Shows channel efficiency; compare across channels to find the best-performing source |
+| Lead source distribution | % of clients from each channel | Diversification reduces risk; single-source dependence is fragile |
+| Website conversion rate | Inquiries ÷ Website visitors | Shows whether the site turns visitors into prospects; low rate means traffic is wasted |
+| Referral rate | % of new clients from referrals | Healthy referral rate indicates satisfied clients but over-reliance limits growth control |
 
 ### Client Value
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Average client lifetime value | Total revenue per client over relationship | 3x+ CAC |
-| Repeat engagement rate | % of clients with 2+ engagements | Higher = healthier |
-| Cross-sell rate | % of clients using multiple service lines | Context-dependent |
-| Client retention (for recurring) | % of retainer clients renewing | 80%+ annual |
-| Revenue concentration | Top client as % of revenue | Under 15% |
-| Top 5 concentration | Top 5 clients as % of revenue | Under 35% |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Average client lifetime value | Total revenue per client over relationship | Determines how much the firm can invest to acquire a client and still profit |
+| Repeat engagement rate | % of clients with 2+ engagements | Higher rates mean the firm captures ongoing value; low rates mean every client is a one-shot |
+| Cross-sell rate | % of clients using multiple service lines | Indicates whether the firm is deepening relationships or leaving money on the table |
+| Client retention (for recurring) | % of retainer clients renewing | Direct measure of ongoing value delivery; declining retention is a leading indicator of revenue loss |
+| Revenue concentration | Top client as % of revenue | High concentration means one lost client can destabilize the practice |
+| Top 5 concentration | Top 5 clients as % of revenue | Broader view of concentration risk across the largest relationships |
 
 ### Operational Efficiency
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Utilization rate | Billable hours ÷ Available hours | 60-80% for practitioners |
-| Leverage ratio | Non-partner practitioners ÷ Partners/owners | Higher = more scalable |
-| Support staff ratio | Support ÷ Practitioners | Context-dependent |
-| Average turnaround time | Typical matter duration | Context-dependent |
-| Capacity headroom | Additional matters current staff could handle | Context-dependent |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Utilization rate | Billable hours ÷ Available hours | Shows how much practitioner time generates revenue vs. gets consumed by admin and overhead |
+| Leverage ratio | Non-partner practitioners ÷ Partners/owners | Higher leverage means partners can focus on high-value work and the firm can scale beyond their hours |
+| Support staff ratio | Support ÷ Practitioners | Too few support staff means expensive practitioners doing cheap tasks; too many inflates overhead |
+| Average turnaround time | Typical matter duration | Affects client experience and cash flow velocity; long turnarounds tie up work-in-progress |
+| Capacity headroom | Additional matters current staff could handle | Determines whether growth requires hiring or can be absorbed by current team |
 
 ### Digital Presence
-| Metric | What to Extract | Benchmark Range |
-|--------|----------------|-----------------|
-| Monthly organic traffic | Unique visitors from organic search | Context-dependent |
-| Organic traffic trend | Month-over-month growth/decline | Positive = healthy |
-| Top keyword rankings | Position for practice-area terms | Page 1 for core terms |
-| Google Business Profile metrics | Views, calls, direction requests | Context-dependent |
-| Review count and rating | Total reviews, average rating | 4.5+ stars, 50+ reviews |
-| Content inventory | Published pages, blog posts, resources | Context-dependent |
+| Metric | What to Extract | Why It Matters |
+|--------|----------------|----------------|
+| Monthly organic traffic | Unique visitors from organic search | Shows whether the firm is visible to prospects who search before they call |
+| Organic traffic trend | Month-over-month growth/decline | Direction matters more than absolute number; declining trend signals eroding visibility |
+| Top keyword rankings | Position for practice-area terms | Ranking for core practice terms drives qualified traffic; poor rankings mean invisible to searchers |
+| Google Business Profile metrics | Views, calls, direction requests | Local visibility indicator; often the first touchpoint for local prospects |
+| Review count and rating | Total reviews, average rating | Social proof that influences prospect decisions; low count or rating creates hesitation |
+| Content inventory | Published pages, blog posts, resources | Reveals whether the firm has invested in thought leadership or has a bare-minimum web presence |
 
 ---
 
