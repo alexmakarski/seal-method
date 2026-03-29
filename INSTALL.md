@@ -17,14 +17,21 @@ cd /path/to/SEAL
 ./install-seal.sh
 ```
 
-That's it. The script copies all 15 SEAL skills into `~/.claude/skills/`.
+That's it. The script copies 14 SEAL skills into `~/.claude/skills/` and 1 agent into `~/.claude/agents/`.
 
 ## Manual Install
 
-If the script doesn't work, copy each folder from `skills/` into `~/.claude/skills/`:
+If the script doesn't work, copy skills and agents manually:
 
 ```bash
 cp -r skills/seal-* ~/.claude/skills/
+cp -r agents/seal-* ~/.claude/agents/
+```
+
+Also remove the old `seal-review` skill if it exists (it's now an agent):
+
+```bash
+rm -rf ~/.claude/skills/seal-review
 ```
 
 ## Verify It Works
@@ -41,21 +48,30 @@ You should see the SEAL orchestrator ask for intake information. If you see "ski
 
 | Skill | What It Does |
 |-------|-------------|
-| `seal-run` | Orchestrator — chains all phases, enforces quality gates |
-| `seal-collect` | Phase 0 — produces data request for client |
-| `seal-audit` | Phase 1 — forensic audit with Pareto Map |
-| `seal-review` | Critic — runs after every phase automatically |
-| `seal-strategy-lens` | Lens selector — routes to the right strategic framework |
+**Skills** (installed to `~/.claude/skills/`):
+
+| Skill | What It Does |
+|-------|-------------|
+| `seal-run` | Orchestrator -- chains all phases, enforces quality gates |
+| `seal-collect` | Phase 0 -- produces data request for client |
+| `seal-audit` | Phase 1 -- forensic audit with Pareto Map |
+| `seal-strategy-lens` | Lens selector -- routes to the right strategic framework |
 | `seal-strategy` | Default lens (Impact/Effort prioritization) |
 | `seal-strategy-toc` | Theory of Constraints lens |
 | `seal-strategy-wardley` | Wardley Mapping lens |
 | `seal-strategy-antifragile` | Antifragile lens |
 | `seal-strategy-systems` | Systems Thinking lens |
 | `seal-strategy-jtbd` | Jobs to Be Done lens |
-| `seal-triz` | Post-lens specialist — contradiction resolution |
-| `seal-rootcause` | Post-lens specialist — root cause analysis |
-| `seal-options` | Post-lens specialist — real options evaluation |
-| `seal-draft` | Phase 3 — produces deliverables and copy briefs |
+| `seal-triz` | Post-lens specialist -- contradiction resolution |
+| `seal-rootcause` | Post-lens specialist -- root cause analysis |
+| `seal-options` | Post-lens specialist -- real options evaluation |
+| `seal-draft` | Phase 3 -- produces deliverables and copy briefs |
+
+**Agents** (installed to `~/.claude/agents/`):
+
+| Agent | What It Does |
+|-------|-------------|
+| `seal-review` | Critic -- runs in isolation after every phase, evaluates with fresh eyes |
 
 ## Domain Checklists (included)
 
@@ -108,8 +124,9 @@ bash install-seal.sh
 Check that the files landed in the right place:
 ```bash
 ls ~/.claude/skills/seal-*
+ls ~/.claude/agents/seal-*
 ```
-You should see 15 directories.
+You should see 14 skill directories and 1 agent directory.
 
 **Claude Code says "skill not found":**
 Restart Claude Code after installing. Some versions cache the skill list on startup.

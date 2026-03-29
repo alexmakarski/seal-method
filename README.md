@@ -1,4 +1,4 @@
-# SEAL Method v1.0.3
+# SEAL Method v2.0.0
 
 **Strategic Evidence Authority Ladder**
 
@@ -15,11 +15,11 @@ Phase 2: Strategic Analysis (6 lenses: TOC, Wardley, Antifragile, Systems, JTBD,
 Phase 3: Operational Deliverables + Copy Briefs
 ```
 
-Every phase is role-locked. The auditor can't recommend. The strategist can't invent findings. The drafter can't change priorities. An automated critic reviews each phase before a human gate lets the next one proceed.
+Every phase is role-locked. The auditor can't recommend. The strategist can't invent findings. The drafter can't change priorities. An isolated critic agent reviews each phase before a human gate lets the next one proceed. The critic runs in a separate context -- it has never seen your conversation, only the output documents. This eliminates the bias that comes from evaluating work you helped create.
 
 ## What's inside
 
-- **15 skills** that install into Claude Code
+- **14 skills + 1 agent** that install into Claude Code
 - **5 domain checklists** (tree service, agency, tax discovery, professional services, membership community)
 - **6 strategic lenses** so the same data gets analyzed through the right framework for the problem shape
 - **3 post-lens specialists** (TRIZ for contradictions, Root Cause for unexplained symptoms, Real Options for high-stakes decisions)
