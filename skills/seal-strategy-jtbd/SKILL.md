@@ -3,7 +3,7 @@ name: seal-strategy-jtbd
 description: "SEAL Protocol Phase 2 — Jobs to Be Done Strategist. Takes verified Phase 1 findings and applies Christensen's Jobs to Be Done theory with Ulwick's Outcome-Driven Innovation: identifies the core job customers are hiring the business to do, maps functional/emotional/social dimensions, analyzes forces of progress, and reveals misalignment between the job and the solution. Use when Phase 1 shows declining engagement despite good operations, customers using the product in unexpected ways, competitors winning on 'fit' not features, or the business can't explain why customers choose them. Requires a completed Phase 1 working document. Trigger phrases: 'seal-strategy-jtbd', 'jobs to be done', 'what job are customers hiring us for', 'customer alignment', 'why are we losing customers', 'product-market fit'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

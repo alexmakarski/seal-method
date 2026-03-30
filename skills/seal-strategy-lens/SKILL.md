@@ -3,7 +3,7 @@ name: seal-strategy-lens
 description: "SEAL Protocol v2 — Cynefin Lens Selector. The single pre-lens routing tool for SEAL. Reads Phase 1 findings, classifies each finding/problem area into Cynefin domains (Clear, Complicated, Complex, Chaotic, Confused), runs a contradiction pre-scan, flags specialist candidates (TRIZ, Root Cause, Real Options), and routes to the right primary lens(es). Replaces both the old lens selector and the old Cynefin strategist. Use after Phase 1 is complete, before running any Phase 2 strategist. Trigger phrases: 'seal-strategy-lens', 'which lens', 'which framework', 'what kind of problem is this', 'help me pick a strategy approach', 'classify this problem'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

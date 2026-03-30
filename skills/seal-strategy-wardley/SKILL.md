@@ -3,7 +3,7 @@ name: seal-strategy-wardley
 description: "SEAL Protocol Phase 2 — Wardley Map Strategist. Takes verified Phase 1 findings and applies Simon Wardley's Wardley Maps: maps the value chain, classifies evolutionary stages, identifies strategic mismatches and inertia, and recommends plays. Use when the problem looks like wrong investments for maturity level, custom-building commodities, or unclear value creation. Requires a completed Phase 1 working document. Trigger phrases: 'seal-strategy-wardley', 'wardley map', 'evolution analysis', 'value chain mapping'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

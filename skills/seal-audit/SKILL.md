@@ -3,7 +3,7 @@ name: seal-audit
 description: "SEAL Protocol Phase 1: Forensic Auditor. Verification mode — trusts nothing, maps what is actually known vs. assumed from provided data. Produces a structured working document with VERIFIED FINDINGS only. Does NOT strategize, prioritize, or draft deliverables. Use when starting any audit, review, or analysis workflow where you need to establish ground truth before making decisions. Trigger phrases: 'seal-audit', 'audit this', 'what do we actually know', 'verify this data', 'forensic audit'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

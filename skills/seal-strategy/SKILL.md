@@ -3,7 +3,7 @@ name: seal-strategy
 description: "SEAL Protocol Phase 2: Strategic Advisor. Takes the verified working document from Phase 1 (seal-audit) and produces prioritized strategic recommendations. This is where senior judgment lives — interpreting findings, identifying what matters most, and deciding what to do. Does NOT draft deliverables. Requires a completed Phase 1 working document as input. Trigger phrases: 'seal-strategy', 'prioritize these findings', 'what should we do about this', 'strategic recommendations'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

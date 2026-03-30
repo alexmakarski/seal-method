@@ -3,7 +3,7 @@ name: seal-strategy-toc
 description: "SEAL Protocol Phase 2 — Theory of Constraints Strategist. Takes verified Phase 1 findings and applies Goldratt's Theory of Constraints: identifies THE constraint, proposes exploitation and subordination, and produces a focused improvement plan. Use when the problem looks like a throughput/bottleneck/flow issue. Requires a completed Phase 1 working document. Trigger phrases: 'seal-strategy-toc', 'find the constraint', 'bottleneck analysis', 'TOC analysis'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

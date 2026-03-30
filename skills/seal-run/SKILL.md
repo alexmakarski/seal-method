@@ -1,13 +1,13 @@
 ---
 name: seal-run
-description: "SEAL Protocol v2 Orchestrator. Chains all SEAL phases automatically with critic review after each phase and human approval gates between phases. Runs the full audit workflow: collect -> audit -> review -> lens select -> strategy -> specialists (optional) -> draft -> review. Can start from any phase if earlier phases are already complete. Trigger phrases: 'seal-run', 'run the full audit', 'run seal end to end'."
+description: "SEAL Protocol v2 Orchestrator. Chains all SEAL phases automatically with critic review after each phase and human approval gates between phases. Runs the full audit workflow: collect -> audit -> review -> lens select -> strategy -> specialists (optional) -> draft -> review. Can start from any phase if earlier phases are already complete. Supports three critic modes: claude (default), gemini (Gemini 2.5 Pro via API), or dual (both critics run independently). Trigger phrases: 'seal-run', 'run the full audit', 'run seal end to end'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow
-  updated: 2026-03-28
+  updated: 2026-03-30
 ---
 
 # SEAL Protocol v2 — Orchestrator
@@ -55,6 +55,12 @@ Collect from the user:
 5. **What data is available?** (already have it, need to request it, or mixed)
 6. **Where to start?** (Phase 0 if no data yet, Phase 1 if data is in hand, later phases if earlier work is done)
 7. **Strategic lens preference?** (optional — default, TOC, Wardley, Antifragile, Systems, JTBD, or "help me choose")
+8. **Critic mode?** (claude, gemini, dual, or "help me choose")
+   - **claude** (default): Claude Code subagent reviews in isolation — current behavior
+   - **gemini**: Gemini 2.5 Pro reviews via API — different model, different blind spots
+   - **dual**: Both run independently, results compared at gate — highest quality, catches disagreements
+   - If "help me choose": recommend **dual** for high-stakes engagements (client deliverables, compliance), **claude** for speed/cost efficiency, **gemini** for budget-conscious runs
+   - If GEMINI_API_KEY is not set and critic mode is "gemini" or "dual", warn the user immediately and fall back to "claude"
 
 If a domain checklist exists, read it from the `seal-audit` skill's `domains/` folder.
 
@@ -75,6 +81,7 @@ folder: [folder-path]
 phase: Phase 0
 lens: [not yet selected]
 specialists: [none]
+critic: [claude / gemini / dual]
 status: active
 started: [YYYY-MM-DD]
 updated: [YYYY-MM-DD]
@@ -131,27 +138,78 @@ Execute the `/seal-audit` logic:
 
 **Immediately after Phase 1 completes, run the critic review (do NOT wait for user input):**
 
+Run the critic review based on the engagement's **critic mode**:
+
+**If critic mode is "claude" or "dual":**
 Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
 1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md`
 2. Phase identifier: "Phase 1"
 3. Engagement metadata: subject, domain, desired outcome, scope boundaries
 4. Domain checklist (if one exists)
+Save to `[engagement folder]/SEAL-[subject]-phase1-review.md`.
 
-The agent will run its Phase 1 checks and save the review to `[engagement folder]/SEAL-[subject]-phase1-review.md`.
+**If critic mode is "gemini" or "dual":**
+Execute the `/seal-gemini-review` skill. Pass it:
+1. The working document path: `[engagement folder]/SEAL-[subject]-working-doc.md`
+2. Phase identifier: "Phase 1"
+3. Engagement metadata: subject, domain, desired outcome, scope boundaries
+4. Domain checklist (if one exists)
+5. Output path: `[engagement folder]/SEAL-[subject]-phase1-gemini-review.md`
 
-Then present both outputs to the user:
+**For dual mode:** run both critics. After both complete, read both review files and synthesize a comparison: identify issues found by both critics (high confidence), issues unique to each, and any contradictory assessments.
 
+Then present outputs to the user:
+
+**Single critic mode (claude or gemini):**
 ```
 PHASE 1 COMPLETE — Forensic Audit done.
-REVIEW 1 COMPLETE — Critic review done.
+REVIEW 1 COMPLETE — Critic review done ([claude/gemini]).
 
 Files saved to [engagement folder]:
 - SEAL-[subject]-working-doc.md (audit findings)
-- SEAL-[subject]-phase1-review.md (critic review)
+- SEAL-[subject]-phase1-[review/gemini-review].md (critic review)
 
 Review summary: [PASS / PASS WITH ISSUES / NEEDS REVISION]
 Critical issues: [count]
 Minor issues: [count]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HUMAN GATE — Please review and respond:
+
+1. "approved" — proceed to Lens Selection
+2. "revise [specific feedback]" — I'll fix the issues and re-run the review
+3. "stop" — pause here, we'll continue later
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Dual critic mode:**
+```
+PHASE 1 COMPLETE — Forensic Audit done.
+REVIEW 1 COMPLETE — Dual critic review done.
+
+Files saved to [engagement folder]:
+- SEAL-[subject]-working-doc.md (audit findings)
+- SEAL-[subject]-phase1-review.md (Claude critic)
+- SEAL-[subject]-phase1-gemini-review.md (Gemini critic)
+
+┌─────────────────────────────────────┐
+│ CLAUDE CRITIC                       │
+│ Overall: [PASS / PASS WITH ISSUES]  │
+│ Critical: [N]  Minor: [N]          │
+└─────────────────────────────────────┘
+┌─────────────────────────────────────┐
+│ GEMINI CRITIC                       │
+│ Overall: [PASS / PASS WITH ISSUES]  │
+│ Critical: [N]  Minor: [N]          │
+└─────────────────────────────────────┘
+
+AGREEMENT: [N] issues found by both critics
+CLAUDE-ONLY: [N] issues found only by Claude
+GEMINI-ONLY: [N] issues found only by Gemini
+
+[If disagreements exist:]
+KEY DISAGREEMENTS:
+- [Issue]: Claude says [X], Gemini says [Y]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 HUMAN GATE — Please review and respond:
@@ -230,14 +288,20 @@ Based on the selected lens, execute the corresponding skill:
 
 Execute the selected strategy skill's logic fully — each lens has its own process, output format, and constraints. Do NOT mix frameworks. Run the one that was chosen.
 
-**Immediately after Phase 2 completes, run the critic review:**
+**Immediately after Phase 2 completes, run the critic review based on the engagement's critic mode:**
 
+**If critic mode is "claude" or "dual":**
 Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
 1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md` (contains both Phase 1 and Phase 2)
 2. Phase identifier: "Phase 2"
 3. Engagement metadata: subject, domain, desired outcome, scope boundaries, chosen lens
+Save to `[engagement folder]/SEAL-[subject]-phase2-review.md`.
 
-The agent will run its Phase 2 checks and save the review to `[engagement folder]/SEAL-[subject]-phase2-review.md`.
+**If critic mode is "gemini" or "dual":**
+Execute the `/seal-gemini-review` skill. Pass it the same inputs.
+Save to `[engagement folder]/SEAL-[subject]-phase2-gemini-review.md`.
+
+**For dual mode:** run both, then synthesize comparison (same pattern as Phase 1).
 
 Then present both outputs:
 
@@ -316,11 +380,10 @@ When the user selects specialists to run:
 For each specialist run:
 1. Execute the specialist skill's logic fully, passing it the specific items flagged by Phase 2
 2. Append output to the working document as an addendum (do NOT replace Phase 2 content)
-3. Spawn the `seal-review` agent to critique the specialist output. Pass it:
-   - The working document (with specialist addendum appended)
-   - Phase identifier: "Phase 2b"
-   - Engagement metadata: subject, domain, desired outcome, which specialist(s) ran
-4. The agent will save the specialist review to `[engagement folder]/SEAL-[subject]-phase2b-[specialist]-review.md`
+3. Run the critic review based on the engagement's **critic mode**:
+   **If critic mode is "claude" or "dual":** Spawn the `seal-review` agent. Pass it the working document (with specialist addendum appended), phase identifier "Phase 2b", and engagement metadata. Save to `[engagement folder]/SEAL-[subject]-phase2b-[specialist]-review.md`.
+   **If critic mode is "gemini" or "dual":** Execute `/seal-gemini-review` with the same inputs. Save to `[engagement folder]/SEAL-[subject]-phase2b-[specialist]-gemini-review.md`.
+   **For dual mode:** run both, then synthesize comparison.
 
 Update state to reflect specialist runs (e.g., "Phase 2 + TRIZ" or "Phase 2b: TRIZ, Root Cause").
 
@@ -366,15 +429,21 @@ Execute the `/seal-draft` logic:
 - Save each deliverable to the engagement folder
 - Append Phase 3 status to working document
 
-**Immediately after Phase 3 completes, run the critic review:**
+**Immediately after Phase 3 completes, run the critic review based on the engagement's critic mode:**
 
+**If critic mode is "claude" or "dual":**
 Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
 1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md` (all phases)
 2. All deliverable files produced in Phase 3
 3. Phase identifier: "Phase 3"
 4. Engagement metadata: subject, domain, desired outcome, scope boundaries
+Save to `[engagement folder]/SEAL-[subject]-phase3-review.md`.
 
-The agent will run its Phase 3 checks and save the review to `[engagement folder]/SEAL-[subject]-phase3-review.md`.
+**If critic mode is "gemini" or "dual":**
+Execute the `/seal-gemini-review` skill with the same inputs.
+Save to `[engagement folder]/SEAL-[subject]-phase3-gemini-review.md`.
+
+**For dual mode:** run both, then synthesize comparison (same pattern as Phase 1).
 
 Then present:
 
@@ -424,12 +493,18 @@ All files in [engagement folder]:
 - SEAL-[subject]-collection-tracker.md
 - SEAL-[subject]-working-doc.md
 - SEAL-[subject]-lens-selection.md
-- SEAL-[subject]-phase1-review.md
-- SEAL-[subject]-phase2-review.md
+- SEAL-[subject]-phase1-review.md (claude critic)
+- SEAL-[subject]-phase1-gemini-review.md (gemini critic, if applicable)
+- SEAL-[subject]-phase2-review.md (claude critic)
+- SEAL-[subject]-phase2-gemini-review.md (gemini critic, if applicable)
 - SEAL-[subject]-phase2b-[specialist]-review.md (if applicable)
-- SEAL-[subject]-phase3-review.md
+- SEAL-[subject]-phase2b-[specialist]-gemini-review.md (if applicable)
+- SEAL-[subject]-phase3-review.md (claude critic)
+- SEAL-[subject]-phase3-gemini-review.md (gemini critic, if applicable)
 - [operational deliverable files]
 - [copy brief files]
+
+Critic mode used: [claude / gemini / dual]
 ```
 
 ## Resuming a Paused Run
@@ -451,6 +526,8 @@ If the user returns and says "continue the SEAL run" or "pick up where we left o
 - NEVER skip the intake step. Even if the user provides data immediately, confirm the domain, subject, and starting phase.
 - If a review comes back NEEDS REVISION, do NOT ask the user if they want to revise — just tell them what the issues are and wait for direction. The user decides whether to fix or override.
 - If the user says "skip the review" for any phase, comply but note it: "Review skipped at user request. Proceeding without critic check."
+- If GEMINI_API_KEY is not set and critic mode is "gemini" or "dual", warn the user immediately during intake and fall back to "claude" mode. Do not silently proceed without the Gemini critic when it was requested.
+- If the Gemini API call fails during a dual-mode review, report the failure at the human gate and present only the Claude critic's results. Do not block the engagement because of an API failure.
 
 ## Usage Examples
 

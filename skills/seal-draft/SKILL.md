@@ -3,7 +3,7 @@ name: seal-draft
 description: "SEAL Protocol Phase 3: Operational Drafter. Takes the completed working document (Phase 1 findings + Phase 2 strategy) and produces client-ready deliverables. Operational documents are drafted directly. Persuasion deliverables (landing pages, emails, talk scripts, ads) produce COPY BRIEFS for handoff to specialized copy skills. Trigger phrases: 'seal-draft', 'draft the deliverables', 'write up the findings', 'produce the report'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

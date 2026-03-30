@@ -3,7 +3,7 @@ name: seal-options
 description: "SEAL Protocol — Post-Lens Specialist: Real Options Evaluation. Takes specific high-stakes, irreversible decisions flagged by a Phase 2 primary lens and applies Real Options theory to determine optimal timing — commit now, defer, stage, or probe. Invoked when a primary lens surfaces decisions marked as irreversible, high-stakes, or under significant uncertainty in its Decisions Required section. Does NOT scan for all decisions — only evaluates the ones referred to it. Trigger phrases: 'seal-options', 'real options', 'should we commit', 'defer or decide', 'option value', 'last responsible moment', 'evaluate this decision'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

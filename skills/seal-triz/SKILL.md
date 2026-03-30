@@ -3,7 +3,7 @@ name: seal-triz
 description: "SEAL Protocol v2 — TRIZ Post-Lens Specialist. Takes specific contradictions surfaced by a primary lens (TOC, Wardley, Cynefin, etc.) during Phase 2 and applies the full TRIZ methodology to resolve them. This is NOT a peer lens — it runs AFTER a primary lens, on its output. Includes business-adapted contradiction matrix, all 40 inventive principles, separation principles, Su-Field analysis, Mini-ARIZ, evolution pattern analysis, and resource/trimming analysis. Trigger phrases: 'seal-triz', 'resolve this contradiction', 'TRIZ specialist', 'break through this trade-off'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

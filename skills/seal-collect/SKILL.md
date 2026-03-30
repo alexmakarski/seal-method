@@ -3,7 +3,7 @@ name: seal-collect
 description: "SEAL Protocol Phase 0: Data Collector. Reads the relevant domain checklist and produces a specific, actionable data request list to send to the client or pull internally. Runs BEFORE the audit — ensures the right data is in hand before analysis begins. Trigger phrases: 'seal-collect', 'what data do we need', 'data request', 'prep for audit'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

@@ -3,7 +3,7 @@ name: seal-strategy-antifragile
 description: "SEAL Protocol Phase 2 — Antifragile Strategist. Takes verified Phase 1 findings and applies Taleb's Antifragile framework: classifies every finding on the Fragile–Robust–Antifragile triad, maps concentration risk and single points of failure, assesses Black Swan exposure, checks for iatrogenics, applies Via Negativa (improve by removing), and designs Barbell Strategies (extreme safety + small aggressive bets). Use when the business has concentration risk, no margin for error, growth at the cost of resilience, or has suffered a recent shock. Requires a completed Phase 1 working document. Trigger phrases: 'seal-strategy-antifragile', 'fragility assessment', 'concentration risk', 'antifragile analysis', 'black swan exposure', 'barbell strategy'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow

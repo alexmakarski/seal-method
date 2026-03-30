@@ -3,7 +3,7 @@ name: seal-strategy-systems
 description: "SEAL Protocol Phase 2 — Systems Thinking Strategist. Takes verified Phase 1 findings and applies Meadows/Senge system dynamics: maps causal loops, identifies stocks/flows/delays, matches system archetypes, and finds high-leverage intervention points. Use when Phase 1 reveals feedback loops, recurring problems despite fixes, delayed effects, or emergent behavior from interactions between parts. Requires a completed Phase 1 working document. Trigger phrases: 'seal-strategy-systems', 'systems thinking', 'feedback loops', 'system dynamics', 'causal loops', 'leverage points'."
 license: proprietary
 metadata:
-  version: 2.0.0
+  version: 2.2.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow
