@@ -28,7 +28,7 @@ After resolution, all file operations target the selected run folder.
 
 This phase requires a completed Phase 1 working document (`SEAL-*-working-doc.md`). If no working document is provided:
 
-1. Check the engagement folder for any `SEAL-*-working-doc.md` files.
+1. Check the run folder for any `SEAL-*-working-doc.md` files.
 2. If found, read it and confirm with the user: "I found [filename]. Should I use this as the Phase 1 input?"
 3. If not found, tell the user: "Phase 2 requires a completed Phase 1 audit. Run `/seal-audit` first."
 
@@ -399,7 +399,7 @@ Append to the existing working document (do not overwrite Phase 1):
 **To proceed:** Run `/seal-draft` with this working document as input.
 ```
 
-Save the updated document in the engagement folder.
+Save the updated document in the run folder.
 
 ## Constraints
 
