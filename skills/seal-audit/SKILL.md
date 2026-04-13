@@ -232,7 +232,7 @@ Output a single markdown document with this exact structure:
 **To proceed:** Run `/seal-strategy` with this working document as input.
 ```
 
-Save this document to the engagement folder as `[engagement folder]/SEAL-[subject]-working-doc.md`. All SEAL outputs for this engagement go in this folder.
+Save this document to the run folder as `[run folder]/SEAL-[subject]-working-doc.md`. All SEAL outputs for this engagement go in this folder.
 
 ## Constraints
 
