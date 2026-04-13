@@ -69,7 +69,6 @@ SEAL files live at: `{client_root}/{client_prefix}{subject}/seal/seal{YYYYMMDD}/
     seal{YYYYMMDD}a/                             # If same date exists, use suffix
   bear/                                          # BEAR engagements (sibling)
   orca/                                          # ORCA diagnostics (sibling)
-  adgradr/                                       # AdGradr reports (sibling)
 ```
 
 **Run folder naming:** Each full run gets its own folder named `seal{YYYYMMDD}`. If a second run happens the same day, append a letter: `seal{YYYYMMDD}a`, then `b`, etc. Check if the folder exists before creating it.
