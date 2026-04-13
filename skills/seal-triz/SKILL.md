@@ -40,7 +40,7 @@ This specialist requires **Phase 2 output from a primary lens** that contains ex
 
 **If no formatted contradictions exist:**
 
-1. Check the engagement folder for the primary lens output in the working document.
+1. Check the run folder for the primary lens output in the working document.
 2. If contradictions are flagged there, extract them and confirm: "I found these contradictions in the [Lens Name] output: [list]. Should I work on all of them, or specific ones?"
 3. If the primary lens output exists but contains NO flagged contradictions, say: "The [Lens Name] analysis didn't flag unresolved contradictions. TRIZ needs contradictions as input. Either re-examine the lens output to surface contradictions, or this engagement may not need TRIZ."
 4. If no primary lens output exists at all, say: "TRIZ is a post-lens specialist. Run a primary lens first (`/seal-strategy-toc`, `/seal-strategy-wardley`, etc.) and I'll resolve contradictions they can't."
@@ -463,7 +463,7 @@ Append to the existing working document (do not overwrite the primary lens outpu
 **To proceed:** Return to the primary lens workflow, or run `/seal-draft` to produce deliverables.
 ```
 
-Save the updated document in the engagement folder.
+Save the updated document in the run folder.
 
 ---
 
