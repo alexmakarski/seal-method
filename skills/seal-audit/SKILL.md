@@ -262,10 +262,111 @@ To use: Read the checklist file at the start of the audit. It defines what data 
 
 If no domain checklist exists for the data you're auditing, use the generic process above. The checklist is a supplement, not a requirement.
 
+## BEAR Integration Mode
+
+When invoked on a BEAR evidence package (a file named `evidence-package.md` with `Schema version: 0.3.0` in its envelope), seal-audit operates differently from a standard audit. The findings have already been extracted by BEAR. Your job is to **grade them**, not extract new ones.
+
+### What changes
+
+- **Skip Step 1 (Data Inventory).** BEAR already inventoried the data in Phase 1A-1E.
+- **Skip Step 2 (Extract Verified Findings).** BEAR already extracted atomic findings. You do not extract new findings from raw data.
+- **Step 1B (Source Reliability) becomes the primary job.** Grade each finding's source using the tier system and three rules, exactly as in a standard audit.
+
+### Process for BEAR evidence packages
+
+#### Step 1: Read the evidence package
+
+Read the evidence package file. Confirm:
+- Schema version (must be 0.3.0 or later)
+- Number of primary and supporting findings
+- SEAL integration mode (full or partial)
+- BEAR's preliminary hypotheses
+
+#### Step 2: Grade primary findings individually
+
+For each finding marked `Priority: primary`, fill in the `SEAL assessment` block:
+
+```
+**SEAL assessment:**
+- Evidence tier: {1 | 2 | 3}
+- Tier rationale: {Why this tier. Read source_context carefully -- it often contains the information that triggers downgrades.}
+- Rules applied: Sole-Source {yes/no}, Attribution Chain {yes/no/not_applicable}, Platform Currency {yes/no/not_applicable}
+- Sole source flag: {yes | no}
+- Corroborating findings: {F-NNN, F-NNN}
+- Conflicting findings: {F-NNN, F-NNN}
+```
+
+**Apply the standard tier rules:**
+- Use the source type to default tier mapping from the evidence package schema (section 1.5)
+- Apply the Sole-Source Rule: is this the only evidence for the claim it supports?
+- Apply the Attribution Chain Rule: if statistics are cited, does the source cite its own source?
+- Apply the Platform Currency Rule: if a platform claim is made, is it verified against current official docs?
+- Read `source_context` carefully. BEAR flags measurement issues, tracking discrepancies, and attribution concerns here. These are signals for tier downgrades.
+
+**Promotion rule:** If you encounter a `Priority: supporting` finding that contradicts a primary finding or that changes the hypothesis landscape, promote it to primary and grade it fully. Note the promotion and why.
+
+#### Step 3: Batch-grade supporting findings
+
+Group supporting findings by source type and assess them as groups:
+
+```
+### Supporting findings batch assessment
+
+#### Google Trends keyword data (F-010 through F-022)
+- Evidence tier: 1
+- Tier rationale: All retrieved via google_trends MCP tool. Directional signals from authoritative source. Supply-side validation noted in source context where applicable.
+- Exceptions: {any individual finding that needs different treatment}
+
+#### Competitive landscape observations (F-023 through F-031)
+- Evidence tier: 1
+- Tier rationale: Directly observable from public websites and SERPs via web research.
+- Exceptions: {any that require interpretation rather than observation}
+```
+
+#### Step 4: Produce the evidence quality summary
+
+```
+### Evidence quality summary
+- Tier 1 findings: {count}
+- Tier 2 findings: {count}
+- Tier 3 findings: {count}
+- Distribution warning: {e.g., "Diagnosis depends heavily on F-001 (Tier 2) -- if measurement integrity concern is real, the primary hypothesis weakens significantly" or "null"}
+```
+
+#### Step 5: Flag gaps and contradictions
+
+Same as standard audit Step 3, but focused on what BEAR's findings reveal rather than raw data. Look for:
+- Findings that contradict each other
+- Data BEAR should have collected but didn't (visible from the finding types present vs. absent)
+- Source context notes that suggest deeper measurement problems than BEAR acknowledged
+
+Write these as `Critical data gaps` in the evidence package.
+
+### What does NOT change
+
+- The tier definitions (1/2/3) are identical to standard audit
+- The three rules (Sole-Source, Attribution Chain, Platform Currency) apply identically
+- The constraint that you NEVER recommend, interpret, or strategize still holds
+- You still produce honest assessments -- if BEAR's findings are all Tier 1, say so; if they're mostly Tier 3, say so
+
+### Output
+
+In BEAR integration mode, seal-audit does NOT produce a separate SEAL working document. It writes its assessments directly into the evidence package file (filling in the SEAL assessment blocks and adding the evidence quality summary). The evidence package becomes the shared working document for the BEAR-SEAL integration.
+
+### Session resolution in BEAR mode
+
+When invoked on a BEAR evidence package:
+1. Read `~/.claude/seal-config.json` for `client_root` and `client_prefix`
+2. The evidence package location tells you the client and run folder: `{client_root}/{client_prefix}{clientname}/bear/bear{YYYYMMDD}/evidence-package.md`
+3. Do NOT create a separate SEAL run folder. Work within the BEAR engagement folder.
+
+---
+
 ## Usage Examples
 
 ```
 "/seal-audit — here's our dental practice P&L and production reports for the last 12 months [paste or attach]"
 "/seal-audit — here's our Google Ads export and GA4 data for the last 90 days [paste or attach]"
 "/seal-audit — review this client's data and tell me what we actually know [paste]"
+"/seal-audit — grade the evidence package at 06-Clients/cli-etraintoday/bear/bear20260410/evidence-package.md"
 ```
