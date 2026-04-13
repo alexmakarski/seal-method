@@ -425,6 +425,83 @@ Save to `[run folder]/SEAL-[subject]-lens-selection.md`:
 - NEVER make decisions that belong to the human. Domain classification is a recommendation — the human may see signals you don't have data for.
 - Keep it focused. This is a routing document, not a strategy document. The full analysis happens in the chosen Phase 2 skill(s).
 
+## BEAR Integration Mode
+
+When invoked on a BEAR evidence package (after seal-audit has graded findings), seal-strategy-lens classifies Cynefin domains **per finding** rather than per engagement. This is the key adaptation: a single BEAR engagement spans multiple domains simultaneously.
+
+### What changes
+
+- **Input:** BEAR evidence package with graded findings, instead of a SEAL Phase 1 working document.
+- **Scope:** Classify each primary finding individually, not the engagement as a whole. "Market analysis" might be Complicated while "attribution question" might be Complex -- within the same engagement.
+- **Output:** Cynefin domain and rationale written into each finding's SEAL assessment block, instead of an engagement-level lens recommendation.
+- **No lens routing.** In BEAR mode, you do NOT recommend SEAL primary lenses (TOC, Wardley, etc.). BEAR has its own Phase 2 methodology. You provide domain classification so BEAR knows which findings support "analyze and act" recommendations (Clear/Complicated) vs. which require experiments (Complex).
+
+### Process for BEAR evidence packages
+
+#### Step 1: Read the graded evidence package
+
+Read the evidence package with seal-audit's tier grades already filled in. For each primary finding, you have: the finding, its tier, its source context, and its industry context.
+
+#### Step 2: Classify each primary finding
+
+For each primary finding, determine the Cynefin domain by asking: **what is the nature of cause-and-effect for this specific observation?**
+
+- **Clear:** The finding's meaning is self-evident. "Competitor X offers free OSHA 10 certification" -- the cause-and-effect is obvious (free competitor = price pressure). No expertise needed to interpret.
+- **Complicated:** The finding requires expertise to interpret but has a deterministic answer. "'osha training' search volume up 21.8%" -- an expert can analyze whether this is demand growth, supply contamination, or seasonal. The answer exists, you just need to find it.
+- **Complex:** The finding's causal implications can only be determined in retrospect or through experiment. "Non-brand ROAS declined from 1.23 to 1.01" -- could be competitive convergence, attribution artifact, or spend scaling. The same data supports contradictory explanations. No amount of analysis resolves it; only a test (geo holdout) reveals which is true.
+- **Chaotic:** Rarely applies to individual BEAR findings. Would apply to findings about active crises (platform outage, sudden regulatory change in effect NOW).
+
+Write the classification into the SEAL assessment block:
+
+```
+- Cynefin domain: {clear | complicated | complex | chaotic}
+- Cynefin rationale: {Why this domain. What type of response this finding supports.}
+```
+
+#### Step 3: Contradiction pre-scan (adapted)
+
+Still run the contradiction pre-scan, but at the finding level. Look for pairs of findings that create tensions:
+
+- F-001 says ROAS is declining. F-012 says non-brand sales grew 167%. These could both be true (spend tripled, so revenue grew but efficiency dropped) or could indicate a measurement problem.
+- For each tension: would more data resolve it (Complicated) or does it require an experiment (Complex)?
+
+Flag any design contradictions the same way as standard mode, but note which findings create the contradiction.
+
+#### Step 4: Specialist flagging (adapted)
+
+In BEAR mode, specialist flags go into the evidence package rather than routing to SEAL Phase 2 skills:
+
+- **Root cause flags** have already been handled by seal-rootcause (run before seal-strategy-lens in BEAR mode)
+- **Real options flags** identify findings that will need seal-options assessment in the recommendation package stage. Note them: "F-001 will require Real Options evaluation when recommendations depend on it."
+- **TRIZ flags** for design contradictions between findings
+
+#### Step 5: Summary
+
+Write a brief domain distribution summary at the end of the SEAL assessment:
+
+```
+### Cynefin domain distribution
+- Clear: {count} findings -- safe for direct recommendations
+- Complicated: {count} findings -- analyzable, expert judgment needed
+- Complex: {count} findings -- require experiments before action
+- Chaotic: {count} findings
+
+Domain warning: {e.g., "3 of the 5 findings supporting the primary hypothesis are Complex domain. Recommendations based on this hypothesis should be 'Test First', not 'Act Now'." or "null"}
+```
+
+### What does NOT change
+
+- The five Cynefin domain definitions are identical
+- You still NEVER run strategy yourself
+- You still NEVER skip classification
+- The constraint against forcing everything into one domain still holds (especially important at finding level -- resist classifying all findings as Complicated just because BEAR has an analysis-oriented methodology)
+
+### Session resolution in BEAR mode
+
+Same as seal-audit BEAR mode: work within the BEAR engagement folder.
+
+---
+
 ## Usage Examples
 
 ```
@@ -433,4 +510,5 @@ Save to `[run folder]/SEAL-[subject]-lens-selection.md`:
 "/seal-strategy-lens — I have 12 findings spanning very different problem types"
 "/seal-strategy-lens — I'm torn between TOC and Systems Thinking for this client"
 "/seal-strategy-lens — some of these problems seem simple and others seem impossible"
+"/seal-strategy-lens — classify findings in 06-Clients/cli-etraintoday/bear/bear20260410/evidence-package.md"
 ```
