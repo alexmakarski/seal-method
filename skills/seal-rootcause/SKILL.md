@@ -3,11 +3,11 @@ name: seal-rootcause
 description: "SEAL Protocol v2 — Root Cause Specialist. A post-lens drill-down tool that takes SPECIFIC symptoms flagged by a primary lens and applies Toyota's 5 Whys, Ishikawa (Fishbone) Diagrams, and Fault Tree Analysis to find root causes. Invoked when a primary lens identifies symptoms it cannot explain — recurring problems, unexplained patterns, or issues that persist despite fixes. Requires Phase 2 output with flagged symptoms. Can be invoked multiple times on different symptom sets. Trigger phrases: 'seal-rootcause', 'root cause analysis', '5 whys', 'fishbone analysis', 'why does this keep happening', 'dig deeper on this symptom'."
 license: proprietary
 metadata:
-  version: 2.2.0
+  version: 2.3.0
   author: Alex Makarski
   category: operations
   domain: audit-workflow
-  updated: 2026-03-19
+  updated: 2026-04-12
 ---
 
 # SEAL Protocol — Root Cause Specialist (Post-Lens Drill-Down)
