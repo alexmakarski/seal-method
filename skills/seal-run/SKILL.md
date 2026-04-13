@@ -584,12 +584,14 @@ Critic mode used: [claude / gemini / dual]
 
 If the user returns and says "continue the SEAL run" or "pick up where we left off":
 
-1. Read the global registry at `~/.claude/.seal-registry.md`
-2. If one active engagement → confirm with user, then read its `.seal-state.md` for current phase
-3. If multiple active engagements → show the list, ask which one to continue
-4. Read the working document from the selected engagement folder
-5. Resume from the next phase
-6. Update `.seal-state.md` and `.seal-registry.md` as phases complete
+1. Read `~/.claude/seal-config.json` for `client_root` and `client_prefix`.
+2. Ask the user which subject/client to resume (or confirm if they named one).
+3. List `seal{YYYYMMDD}` folders under `{client_root}/{client_prefix}{subject}/seal/`.
+4. Read `.seal-run.md` from the most recent folder to find current phase and status.
+5. If multiple active runs exist, show them and ask which one to continue.
+6. Read the working document from the selected run folder.
+7. Resume from the next phase.
+8. Update `.seal-run.md` as phases complete.
 
 ## Constraints
 
