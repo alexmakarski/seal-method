@@ -30,7 +30,7 @@ After resolution, all file operations target the selected run folder.
 
 This phase requires a working document with completed Phase 1 AND Phase 2 sections. If no working document is provided:
 
-1. Check the engagement folder for any `SEAL-*-working-doc.md` files.
+1. Check the run folder for any `SEAL-*-working-doc.md` files.
 2. If found, read it and verify it contains both Phase 1 and Phase 2 sections.
 3. If Phase 2 is missing, tell the user: "This working document only has Phase 1. Run `/seal-strategy` first."
 4. If no file found, tell the user: "Phase 3 requires completed Phase 1 and Phase 2. Run `/seal-audit` first."
@@ -99,7 +99,7 @@ If you find anything that doesn't trace back to the working document, remove it 
 
 ### Step 4: Produce Final Documents
 
-Save each deliverable as a separate file in the engagement folder.
+Save each deliverable as a separate file in the run folder.
 
 ## Standard Deliverables — OPERATIONAL
 
