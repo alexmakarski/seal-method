@@ -61,7 +61,7 @@ Before producing the data request, research current industry benchmarks for the 
 - If no credible benchmarks exist for a metric, say so explicitly rather than inventing one
 
 **Output:**
-Save a benchmark reference document to the engagement folder: `SEAL-[subject]-benchmarks.md`
+Save a benchmark reference document to the run folder: `SEAL-[subject]-benchmarks.md`
 
 ```markdown
 # Industry Benchmarks: [Domain / Business Type]
@@ -178,7 +178,7 @@ If the client can only provide a subset, the absolute minimum to proceed with Ph
 Without these three, do not proceed to Phase 1.
 ```
 
-Save both documents to the engagement folder. All SEAL outputs for this engagement go in this folder.
+Save both documents to the run folder. All SEAL outputs for this engagement go in this folder.
 
 ## Constraints
 
