@@ -158,7 +158,7 @@ jq -r '.candidates[0].content.parts[0].text // empty' /tmp/seal-gemini-response.
 
 ### Step 6: Save the Review
 
-Save the extracted review text to the output path provided by the orchestrator (e.g., `[engagement folder]/SEAL-[subject]-phase[N]-gemini-review.md`).
+Save the extracted review text to the output path provided by the orchestrator (e.g., `[run folder]/SEAL-[subject]-phase[N]-gemini-review.md`).
 
 Clean up:
 ```bash
