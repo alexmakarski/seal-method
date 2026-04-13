@@ -30,7 +30,7 @@ After resolution, all file operations target the selected run folder.
 
 This requires a completed Phase 1 working document (`SEAL-*-working-doc.md`). If no working document is provided:
 
-1. Check the engagement folder for any `SEAL-*-working-doc.md` files.
+1. Check the run folder for any `SEAL-*-working-doc.md` files.
 2. If found, read it and confirm with the user: "I found [filename]. Should I use this as the Phase 1 input?"
 3. If not found, tell the user: "Lens selection requires a completed Phase 1 audit. Run `/seal-audit` first."
 
@@ -350,7 +350,7 @@ Once stable, re-run `/seal-strategy-lens` to route the remaining findings."
 
 ## Output Format
 
-Save to `[engagement folder]/SEAL-[subject]-lens-selection.md`:
+Save to `[run folder]/SEAL-[subject]-lens-selection.md`:
 
 ```markdown
 # SEAL Lens Selection: [Subject]
