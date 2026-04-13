@@ -296,7 +296,7 @@ Append to the existing working document as a specialist addendum (do not overwri
 - Make required decisions on the architecture (agree / disagree / modify)
 ```
 
-Save the updated document in the engagement folder.
+Save the updated document in the run folder.
 
 ## Constraints
 
