@@ -45,39 +45,124 @@ COMPLETE
 
 ## Process
 
+## File Storage
+
+**Read the client root from `~/.claude/seal-config.json`.** This file contains `client_root` (the base folder) and `client_prefix` (e.g., "cli-"). Same keys as BEAR and ORCA so teams using all products share the same directory convention. If the config file doesn't exist, ask the user where they keep client files and create the config before proceeding.
+
+Client work lives at: `{client_root}/{client_prefix}{subject}/`
+
+SEAL files live at: `{client_root}/{client_prefix}{subject}/seal/seal{YYYYMMDD}/`
+
+```
+{client_root}/{client_prefix}{subject}/
+  seal/
+    seal{YYYYMMDD}/                              # Run folder, date-stamped
+      .seal-run.md                               # Run state (phase, metadata)
+      SEAL-{subject}-working-doc.md              # Main working document (all phases)
+      SEAL-{subject}-phase1-review.md            # Critic reviews
+      SEAL-{subject}-phase2-review.md
+      SEAL-{subject}-phase3-review.md
+      SEAL-{subject}-lens-selection.md
+      SEAL-{subject}-implementation-plan.md
+      from-client/                               # User-provided data
+        PLACE-FILES-HERE.md
+    seal{YYYYMMDD}a/                             # If same date exists, use suffix
+  bear/                                          # BEAR engagements (sibling)
+  orca/                                          # ORCA diagnostics (sibling)
+  adgradr/                                       # AdGradr reports (sibling)
+```
+
+**Run folder naming:** Each full run gets its own folder named `seal{YYYYMMDD}`. If a second run happens the same day, append a letter: `seal{YYYYMMDD}a`, then `b`, etc. Check if the folder exists before creating it.
+
+### Step 0: Workspace Setup
+
+**Run this before collecting detailed intake information.**
+
+1. **Read config** from `~/.claude/seal-config.json`. If the file doesn't exist, ask the user: "Where do you keep client files?" Create the config with their answer.
+
+2. **Collect subject name.** Ask: "What are we auditing?" Use the business/client name as the subject (lowercased, spaces to hyphens for the folder name).
+
+3. **Determine the run folder name.** Check if `{client_root}/{client_prefix}{subject}/seal/seal{YYYYMMDD}/` already exists.
+   - If it does not exist: use `seal{YYYYMMDD}`
+   - If it exists: append a letter suffix. Check `seal{YYYYMMDD}a`, then `b`, etc. Use the first that doesn't exist.
+
+4. **Create the folder structure:**
+   ```
+   {client_root}/{client_prefix}{subject}/
+     seal/
+       seal{YYYYMMDD}/
+         from-client/
+   ```
+
+5. **Write a placement guide** to `from-client/PLACE-FILES-HERE.md`:
+
+   ```markdown
+   # Data Files for SEAL Audit
+
+   Drop client-provided files into this folder. SEAL will incorporate them during analysis.
+
+   ## What to place here
+
+   **Financial data**
+   - Revenue reports, P&L statements, pricing sheets
+   - Client revenue by month (CSV or spreadsheet)
+
+   **Operational data**
+   - Project management exports, time tracking reports
+   - Team structure, org charts, role descriptions
+   - Process documentation, SOPs
+
+   **Client/market data**
+   - Client satisfaction surveys, NPS data
+   - Competitive intelligence, market research
+   - Sales pipeline data, CRM exports
+
+   **Communications**
+   - Meeting transcripts, call recordings
+   - Slack exports, email threads (relevant ones)
+
+   ## File naming
+
+   No strict naming required. Use descriptive names:
+   - `revenue-by-client-2025.xlsx`
+   - `team-structure.pdf`
+   - `client-survey-results-q1.csv`
+   ```
+
+6. **Confirm with the user.** Print the created folder path and ask:
+   > Workspace ready at `{run_folder}/`
+   >
+   > Drop any data files into `from-client/` now or as they become available.
+   >
+   > Ready to begin intake? (y/n)
+
 ### Step 1: Intake
 
 Collect from the user:
-1. **What are we auditing?** (business type, client name)
+1. **Organization details.** Business type, size, team structure (subject name already collected in Step 0).
 2. **What is the desired outcome?** The single outcome that findings will be ranked against in the Pareto Map. Ask: "What does winning look like?" Examples: "grow revenue," "free up founder time," "reduce churn," "improve energy levels," "ship faster." This becomes the axis for all impact estimation. If the user gives multiple outcomes, push back: "Pick the ONE that matters most. The others may correlate, but we need a single ranking axis."
 3. **What domain?** (dental, tree service, agency, Google Ads, or generic)
-4. **What folder should this engagement live in?** (e.g., `Audits/AcmeDental-Q1`, `Projects/SmithTree-March`). Store as an absolute path in the registry so engagements are findable from any working directory.
-5. **What data is available?** (already have it, need to request it, or mixed)
-6. **Where to start?** (Phase 0 if no data yet, Phase 1 if data is in hand, later phases if earlier work is done)
-7. **Strategic lens preference?** (optional — default, TOC, Wardley, Antifragile, Systems, JTBD, or "help me choose")
-8. **Critic mode?** (claude, gemini, dual, or "help me choose")
-   - **claude** (default): Claude Code subagent reviews in isolation — current behavior
-   - **gemini**: Gemini 2.5 Pro reviews via API — different model, different blind spots
-   - **dual**: Both run independently, results compared at gate — highest quality, catches disagreements
+4. **What data is available?** (already have it, need to request it, or mixed)
+5. **Where to start?** (Phase 0 if no data yet, Phase 1 if data is in hand, later phases if earlier work is done)
+6. **Strategic lens preference?** (optional -- default, TOC, Wardley, Antifragile, Systems, JTBD, or "help me choose")
+7. **Critic mode?** (claude, gemini, dual, or "help me choose")
+   - **claude** (default): Claude Code subagent reviews in isolation -- current behavior
+   - **gemini**: Gemini 2.5 Pro reviews via API -- different model, different blind spots
+   - **dual**: Both run independently, results compared at gate -- highest quality, catches disagreements
    - If "help me choose": recommend **dual** for high-stakes engagements (client deliverables, compliance), **claude** for speed/cost efficiency, **gemini** for budget-conscious runs
    - If GEMINI_API_KEY is not set and critic mode is "gemini" or "dual", warn the user immediately and fall back to "claude"
 
 If a domain checklist exists, read it from the `seal-audit` skill's `domains/` folder.
 
-Create the engagement folder if it doesn't exist.
+#### State Setup
 
-#### Registry and State Setup
-
-After intake, manage the session tracking files:
-
-1. **Create `.seal-state.md` inside the engagement folder:**
+After intake, write `.seal-run.md` inside the run folder:
 
 ```markdown
 ---
 subject: [subject-name]
 domain: [domain]
 desired_outcome: [the single outcome findings are ranked against]
-folder: [folder-path]
 phase: Phase 0
 lens: [not yet selected]
 specialists: [none]
@@ -88,21 +173,9 @@ updated: [YYYY-MM-DD]
 ---
 ```
 
-2. **Create or update the global registry at `~/.claude/.seal-registry.md`:**
+**Update `.seal-run.md` after every phase completes** -- update the `phase`, `specialists`, `status`, and `updated` fields to reflect current progress. When specialists run, record them in the phase field (e.g., "Phase 2 + TRIZ" or "Phase 2b: TRIZ, Root Cause").
 
-```markdown
-# SEAL Active Engagements
-
-| Subject | Folder | Domain | Phase | Status | Started | Updated |
-|---------|--------|--------|-------|--------|---------|---------|
-| [subject] | [folder-path] | [domain] | Phase 0 | active | [date] | [date] |
-```
-
-If `.seal-registry.md` already exists, append the new engagement as a row. Do not overwrite existing entries.
-
-3. **Update `.seal-state.md` and `.seal-registry.md` after every phase completes** — update the `phase`, `specialists`, `status`, and `updated` fields to reflect current progress. When specialists run, record them in the phase field (e.g., "Phase 2 + TRIZ" or "Phase 2b: TRIZ, Root Cause").
-
-All file operations for this engagement target the engagement folder (not a hardcoded path).
+All file operations for this engagement target the run folder.
 
 ### Step 2: Phase 0 — Data Collection (skip if data is already available)
 
