@@ -30,7 +30,7 @@ After resolution, all file operations target the selected run folder.
 
 This specialist requires **Phase 2 output from a primary lens** with explicitly flagged symptoms. If no Phase 2 output is provided:
 
-1. Check the engagement folder for a `SEAL-*-working-doc.md` file that contains a Phase 2 section.
+1. Check the run folder for a `SEAL-*-working-doc.md` file that contains a Phase 2 section.
 2. If found, read it and look for flagged symptoms — items the primary lens marked as unexplained, recurring, or needing deeper causal analysis.
 3. If Phase 2 output exists but has NO flagged symptoms, tell the user: "The primary lens didn't flag any symptoms for root cause analysis. If you want me to dig into specific findings anyway, point me to which ones."
 4. If no Phase 2 output exists, tell the user: "Root Cause is a post-lens specialist — it needs a completed Phase 2 analysis with flagged symptoms. Run your primary lens first (e.g., `/seal-strategy-*`), and if it flags symptoms it can't explain, invoke me on those."
@@ -361,7 +361,7 @@ Append to the existing working document (do not overwrite Phase 1 or Phase 2 pri
 **Note:** This addendum supplements the primary lens analysis. Root cause findings should be integrated into the primary lens recommendations before proceeding to Phase 3.
 ```
 
-Save the updated document in the engagement folder.
+Save the updated document in the run folder.
 
 ## Constraints
 
