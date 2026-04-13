@@ -376,6 +376,98 @@ Save the updated document in the run folder.
 - NEVER ignore data gaps. If the root cause identification depends on data that Phase 1 or Phase 2 flagged as missing, state this explicitly and rate your confidence accordingly.
 - If the flagged symptoms have obvious causes that don't require deep analysis, say so: "These flagged symptoms have straightforward causes visible in the data. Root cause drill-down may not add value here — the primary lens findings are sufficient."
 
+## BEAR Integration Mode
+
+When invoked on a BEAR evidence package (after seal-audit has graded the findings), seal-rootcause operates differently from a standard post-lens drill-down. Instead of taking flagged symptoms from a SEAL Phase 2 lens, it takes BEAR's preliminary hypotheses and evaluates them as competing explanations for the findings.
+
+### What changes
+
+- **Input:** BEAR's preliminary hypotheses (PH-1, PH-2, etc.) and the graded findings, instead of flagged symptoms from a SEAL primary lens.
+- **Goal:** Evaluate whether BEAR's hypotheses are the only plausible explanations, generate additional hypotheses BEAR may have missed, and identify what would distinguish between them.
+- **Output:** The SEAL Hypothesis Landscape section of the evidence package, instead of a root cause addendum to a SEAL working document.
+
+### Process for BEAR evidence packages
+
+#### Step 1: Read BEAR's preliminary hypotheses
+
+For each hypothesis BEAR proposed:
+- What findings does it claim support it?
+- What is the proposed causal mechanism?
+- What are the SEAL tier grades for the supporting findings?
+
+#### Step 2: Evaluate each hypothesis
+
+For each BEAR hypothesis, apply the 5 Whys framework -- but in reverse. Instead of asking "why does this symptom exist?" ask "if this hypothesis is true, what else would we expect to see?"
+
+```
+### Hypothesis evaluation: PH-1 ({name})
+
+**If this hypothesis is true:**
+- We would expect to see: {predicted observation 1}
+  - Do we see it? {yes/no/partially -- cite finding F-NNN}
+- We would expect to see: {predicted observation 2}
+  - Do we see it? {yes/no/partially -- cite finding F-NNN}
+- We would NOT expect to see: {observation that would contradict this hypothesis}
+  - Do we see it? {yes/no -- cite finding F-NNN}
+
+**Evidence strength for this hypothesis:**
+- Supported by: {F-NNN (Tier X), F-NNN (Tier X)}
+- Contradicted by: {F-NNN (Tier X)}
+- Plausibility: {high | moderate | low}
+```
+
+#### Step 3: Generate additional hypotheses
+
+After evaluating BEAR's hypotheses, ask: are there explanations BEAR didn't consider?
+
+Sources for additional hypotheses:
+- Findings that don't fit neatly into any of BEAR's hypotheses
+- Contradictions between findings that BEAR didn't address
+- Standard root cause categories (People, Process, Technology, Policy, Environment, Measurement) applied to the findings -- does a measurement or process explanation exist that BEAR didn't consider?
+- The source_context fields -- BEAR often buries important caveats there that could generate their own hypotheses
+
+If you generate additional hypotheses, evaluate them using the same framework as Step 2.
+
+#### Step 4: Identify discriminating tests
+
+For each pair of competing hypotheses, identify what data or experiment would distinguish between them:
+
+```
+### Discriminating tests
+
+#### {Hypothesis A} vs {Hypothesis B}
+- Test: {description}
+- What result supports A: {outcome}
+- What result supports B: {outcome}
+- Cost: {time, money, risk}
+- Reversible: {yes | no}
+```
+
+This is critical. If two hypotheses lead to different recommendations, the discriminating test is what prevents the wrong recommendation from being implemented.
+
+#### Step 5: Write the hypothesis landscape
+
+Produce the SEAL Hypothesis Landscape section (as defined in the evidence package schema, section 1.7). This includes:
+- Evidence quality summary (counts by tier)
+- Each competing hypothesis with evidence for/against, domain classification, and verdict
+- Unresolvable by analysis (questions that need experiments)
+- Critical data gaps
+
+Write the hypothesis landscape directly into the evidence package file.
+
+### What does NOT change
+
+- The 5 Whys, Ishikawa, and Fault Tree tools are available if a hypothesis needs deeper causal analysis
+- The convergence check still applies: if multiple hypotheses trace to the same root mechanism, flag it
+- You still NEVER introduce new findings. If you spot something missing, flag it in critical data gaps
+- You still NEVER recommend actions. You evaluate explanations and identify what would distinguish between them
+
+### Session resolution in BEAR mode
+
+Same as seal-audit BEAR mode: work within the BEAR engagement folder, do not create a separate SEAL run folder.
+
+---
+
 ## Usage Examples
 
 ```
@@ -384,4 +476,5 @@ Save the updated document in the run folder.
 "/seal-rootcause — the primary lens found five issues that seem related but couldn't identify the thread connecting them"
 "/seal-rootcause — TOC lens identified a constraint but the constraint keeps shifting — why?"
 "/seal-rootcause — run another pass, this time on the customer retention symptoms from Group B"
+"/seal-rootcause — evaluate the hypotheses in 06-Clients/cli-etraintoday/bear/bear20260410/evidence-package.md"
 ```
