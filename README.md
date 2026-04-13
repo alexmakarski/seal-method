@@ -56,21 +56,17 @@ Every SEAL engagement starts with one question: **"What does winning look like?"
 
 The answer becomes the axis everything gets ranked against. Revenue, time, health, speed. The Pareto Map estimates each finding's impact on that outcome, ranks them all, and draws a line. Above the line: the vital few. Below: noise.
 
-## How SEAL relates to ORCA
+## Ecosystem
 
-SEAL and ORCA are sibling products with different epistemic positions:
+SEAL is part of a family of open-source diagnostic methods:
 
-| | SEAL | ORCA |
-|---|------|-------|
-| **Position** | Outside-in | Inside-out |
-| **Input** | Submitted evidence | Direct system observation |
-| **Trust model** | Trust nothing, verify everything | Trust the data, question the patterns |
-| **Core question** | "What's actually true here?" | "Where is the margin going?" |
-| **Output** | Verified findings + strategic recommendations | Automation/augmentation roadmap |
+| Method | What it diagnoses | Repo |
+|--------|-------------------|------|
+| **SEAL** | "What's actually true here, verified against evidence?" | This repo |
+| **ORCA** | "Where is the margin going and what's the highest-leverage operational fix?" | [orca-method](https://github.com/alexmakarski/orca-method) |
+| **BEAR** | "What changed in your market and what does it mean for your positioning?" | [bear-method](https://github.com/alexmakarski/bear-method) |
 
-SEAL is a forensic auditor working from documents. ORCA is an operational diagnostician with direct access to the patient. They can inform each other but neither requires the other.
-
-**[ORCA on GitHub](https://github.com/alexmakarski/orca-method/)**
+SEAL is a forensic auditor working from documents. ORCA is an operational diagnostician with direct access to the patient. BEAR diagnoses the market environment outside the business. They can inform each other but none requires the others.
 
 ## Read more
 
