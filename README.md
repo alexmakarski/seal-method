@@ -56,11 +56,11 @@ Every SEAL engagement starts with one question: **"What does winning look like?"
 
 The answer becomes the axis everything gets ranked against. Revenue, time, health, speed. The Pareto Map estimates each finding's impact on that outcome, ranks them all, and draws a line. Above the line: the vital few. Below: noise.
 
-## How SEAL relates to SONAR
+## How SEAL relates to ORCA
 
-SEAL and SONAR are sibling products with different epistemic positions:
+SEAL and ORCA are sibling products with different epistemic positions:
 
-| | SEAL | SONAR |
+| | SEAL | ORCA |
 |---|------|-------|
 | **Position** | Outside-in | Inside-out |
 | **Input** | Submitted evidence | Direct system observation |
@@ -68,9 +68,9 @@ SEAL and SONAR are sibling products with different epistemic positions:
 | **Core question** | "What's actually true here?" | "Where is the margin going?" |
 | **Output** | Verified findings + strategic recommendations | Automation/augmentation roadmap |
 
-SEAL is a forensic auditor working from documents. SONAR is an operational diagnostician with direct access to the patient. They can inform each other but neither requires the other.
+SEAL is a forensic auditor working from documents. ORCA is an operational diagnostician with direct access to the patient. They can inform each other but neither requires the other.
 
-**[SONAR on GitHub](https://github.com/alexmakarski/sonar-method/)**
+**[ORCA on GitHub](https://github.com/alexmakarski/orca-method/)**
 
 ## Read more
 
