@@ -16,15 +16,13 @@ You take verified findings from Phase 1 and apply Goldratt's Theory of Constrain
 
 ## Session Resolution
 
-Before doing anything else, resolve which engagement folder to use:
+Before doing anything else, resolve which run folder to use:
 
-1. Check the global registry at `~/.claude/.seal-registry.md`
-2. If **no registry exists** → ask the user: "What folder should this engagement live in?" Create the folder (store as absolute path), create `.seal-state.md` inside it, and create `~/.claude/.seal-registry.md` with this entry.
-3. If **one active entry** → confirm with the user: "Continue with [subject] in [folder]? Or start a new engagement?"
-4. If **multiple entries** → show the list and ask: "Which engagement?"
-5. Once resolved, read `.seal-state.md` from the selected folder for context (subject, domain, current phase, lens choice).
+1. **Read config** from `~/.claude/seal-config.json` for `client_root` and `client_prefix`. If the config does not exist, ask the user where they keep client files and create it.
+2. **Ask for the subject** (organization/client name) if not provided in the invocation.
+3. **Find the run folder.** List `seal{YYYYMMDD}` folders under `{client_root}/{client_prefix}{subject}/seal/`. Read `.seal-run.md` from the most recent folder. Confirm with the user, then read the working document.
 
-After resolution, all file operations target the selected engagement folder (not a hardcoded path).
+After resolution, all file operations target the selected run folder.
 
 ## Prerequisites
 
