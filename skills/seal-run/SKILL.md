@@ -189,7 +189,7 @@ Then tell the user:
 ```
 PHASE 0 COMPLETE — Data request produced.
 
-Files saved to [engagement folder]:
+Files saved to [run folder]:
 - SEAL-[subject]-data-request.md (send to client)
 - SEAL-[subject]-collection-tracker.md (internal tracking)
 
@@ -207,7 +207,7 @@ Execute the `/seal-audit` logic:
 - Extract verified findings with citations and confidence levels
 - Map gaps and contradictions
 - Flag claims without evidence
-- Save the working document to `[engagement folder]/SEAL-[subject]-working-doc.md`
+- Save the working document to `[run folder]/SEAL-[subject]-working-doc.md`
 
 **Immediately after Phase 1 completes, run the critic review (do NOT wait for user input):**
 
@@ -215,19 +215,19 @@ Run the critic review based on the engagement's **critic mode**:
 
 **If critic mode is "claude" or "dual":**
 Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
-1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md`
+1. The working document: `[run folder]/SEAL-[subject]-working-doc.md`
 2. Phase identifier: "Phase 1"
 3. Engagement metadata: subject, domain, desired outcome, scope boundaries
 4. Domain checklist (if one exists)
-Save to `[engagement folder]/SEAL-[subject]-phase1-review.md`.
+Save to `[run folder]/SEAL-[subject]-phase1-review.md`.
 
 **If critic mode is "gemini" or "dual":**
 Execute the `/seal-gemini-review` skill. Pass it:
-1. The working document path: `[engagement folder]/SEAL-[subject]-working-doc.md`
+1. The working document path: `[run folder]/SEAL-[subject]-working-doc.md`
 2. Phase identifier: "Phase 1"
 3. Engagement metadata: subject, domain, desired outcome, scope boundaries
 4. Domain checklist (if one exists)
-5. Output path: `[engagement folder]/SEAL-[subject]-phase1-gemini-review.md`
+5. Output path: `[run folder]/SEAL-[subject]-phase1-gemini-review.md`
 
 **For dual mode:** run both critics. After both complete, read both review files and synthesize a comparison: identify issues found by both critics (high confidence), issues unique to each, and any contradictory assessments.
 
@@ -238,7 +238,7 @@ Then present outputs to the user:
 PHASE 1 COMPLETE — Forensic Audit done.
 REVIEW 1 COMPLETE — Critic review done ([claude/gemini]).
 
-Files saved to [engagement folder]:
+Files saved to [run folder]:
 - SEAL-[subject]-working-doc.md (audit findings)
 - SEAL-[subject]-phase1-[review/gemini-review].md (critic review)
 
@@ -260,7 +260,7 @@ HUMAN GATE — Please review and respond:
 PHASE 1 COMPLETE — Forensic Audit done.
 REVIEW 1 COMPLETE — Dual critic review done.
 
-Files saved to [engagement folder]:
+Files saved to [run folder]:
 - SEAL-[subject]-working-doc.md (audit findings)
 - SEAL-[subject]-phase1-review.md (Claude critic)
 - SEAL-[subject]-phase1-gemini-review.md (Gemini critic)
@@ -308,7 +308,7 @@ Execute the `/seal-strategy-lens` logic:
 - Classify each finding/problem area into Cynefin domains (Clear, Complicated, Complex, Chaotic, Confused)
 - Based on domain distribution, recommend the best-fit primary lens
 - Flag specialist candidates: contradictions (TRIZ), unexplained symptoms (Root Cause), high-stakes decisions (Real Options)
-- Save to `[engagement folder]/SEAL-[subject]-lens-selection.md`
+- Save to `[run folder]/SEAL-[subject]-lens-selection.md`
 
 Then present:
 
@@ -365,14 +365,14 @@ Execute the selected strategy skill's logic fully — each lens has its own proc
 
 **If critic mode is "claude" or "dual":**
 Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
-1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md` (contains both Phase 1 and Phase 2)
+1. The working document: `[run folder]/SEAL-[subject]-working-doc.md` (contains both Phase 1 and Phase 2)
 2. Phase identifier: "Phase 2"
 3. Engagement metadata: subject, domain, desired outcome, scope boundaries, chosen lens
-Save to `[engagement folder]/SEAL-[subject]-phase2-review.md`.
+Save to `[run folder]/SEAL-[subject]-phase2-review.md`.
 
 **If critic mode is "gemini" or "dual":**
 Execute the `/seal-gemini-review` skill. Pass it the same inputs.
-Save to `[engagement folder]/SEAL-[subject]-phase2-gemini-review.md`.
+Save to `[run folder]/SEAL-[subject]-phase2-gemini-review.md`.
 
 **For dual mode:** run both, then synthesize comparison (same pattern as Phase 1).
 
@@ -382,7 +382,7 @@ Then present both outputs:
 PHASE 2 COMPLETE — Strategic analysis done ([lens name]).
 REVIEW 2 COMPLETE — Critic review done.
 
-Files updated/saved to [engagement folder]:
+Files updated/saved to [run folder]:
 - SEAL-[subject]-working-doc.md (updated with strategy)
 - SEAL-[subject]-lens-selection.md (lens rationale)
 - SEAL-[subject]-phase2-review.md (critic review)
@@ -454,8 +454,8 @@ For each specialist run:
 1. Execute the specialist skill's logic fully, passing it the specific items flagged by Phase 2
 2. Append output to the working document as an addendum (do NOT replace Phase 2 content)
 3. Run the critic review based on the engagement's **critic mode**:
-   **If critic mode is "claude" or "dual":** Spawn the `seal-review` agent. Pass it the working document (with specialist addendum appended), phase identifier "Phase 2b", and engagement metadata. Save to `[engagement folder]/SEAL-[subject]-phase2b-[specialist]-review.md`.
-   **If critic mode is "gemini" or "dual":** Execute `/seal-gemini-review` with the same inputs. Save to `[engagement folder]/SEAL-[subject]-phase2b-[specialist]-gemini-review.md`.
+   **If critic mode is "claude" or "dual":** Spawn the `seal-review` agent. Pass it the working document (with specialist addendum appended), phase identifier "Phase 2b", and engagement metadata. Save to `[run folder]/SEAL-[subject]-phase2b-[specialist]-review.md`.
+   **If critic mode is "gemini" or "dual":** Execute `/seal-gemini-review` with the same inputs. Save to `[run folder]/SEAL-[subject]-phase2b-[specialist]-gemini-review.md`.
    **For dual mode:** run both, then synthesize comparison.
 
 Update state to reflect specialist runs (e.g., "Phase 2 + TRIZ" or "Phase 2b: TRIZ, Root Cause").
@@ -467,7 +467,7 @@ PHASE 2b COMPLETE — Specialist analysis done.
 
 Specialists run: [list]
 
-Files updated/saved to [engagement folder]:
+Files updated/saved to [run folder]:
 - SEAL-[subject]-working-doc.md (updated with specialist addenda)
 - SEAL-[subject]-phase2b-[specialist]-review.md (per specialist)
 
@@ -506,15 +506,15 @@ Execute the `/seal-draft` logic:
 
 **If critic mode is "claude" or "dual":**
 Spawn the `seal-review` agent (NOT a skill -- it must run in isolation). Pass it:
-1. The working document: `[engagement folder]/SEAL-[subject]-working-doc.md` (all phases)
+1. The working document: `[run folder]/SEAL-[subject]-working-doc.md` (all phases)
 2. All deliverable files produced in Phase 3
 3. Phase identifier: "Phase 3"
 4. Engagement metadata: subject, domain, desired outcome, scope boundaries
-Save to `[engagement folder]/SEAL-[subject]-phase3-review.md`.
+Save to `[run folder]/SEAL-[subject]-phase3-review.md`.
 
 **If critic mode is "gemini" or "dual":**
 Execute the `/seal-gemini-review` skill with the same inputs.
-Save to `[engagement folder]/SEAL-[subject]-phase3-gemini-review.md`.
+Save to `[run folder]/SEAL-[subject]-phase3-gemini-review.md`.
 
 **For dual mode:** run both, then synthesize comparison (same pattern as Phase 1).
 
@@ -532,7 +532,7 @@ Copy Briefs (hand off to copy skills):
 
 REVIEW 3 COMPLETE — Critic review done.
 
-Files saved to [engagement folder]:
+Files saved to [run folder]:
 - [List all deliverable files]
 - SEAL-[subject]-phase3-review.md (critic review)
 - SEAL-[subject]-working-doc.md (final, all phases complete)
@@ -561,7 +561,7 @@ Specialists: [list if any, or "none"]
 Phases completed: 0 → 1 → 2 [→ 2b] → 3
 Reviews passed: [N]/[N]
 
-All files in [engagement folder]:
+All files in [run folder]:
 - SEAL-[subject]-data-request.md
 - SEAL-[subject]-collection-tracker.md
 - SEAL-[subject]-working-doc.md
