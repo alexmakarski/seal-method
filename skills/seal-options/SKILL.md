@@ -311,6 +311,113 @@ Save the updated document in the run folder.
 - NEVER ignore Phase 1 or Phase 2 gaps. Missing data from earlier phases may mean you can't assess option value. Say so.
 - If referred decisions are straightforward and uncertainty is low, say so: "The referred decisions have low uncertainty and clear paths. Real Options evaluation adds complexity without value here. Recommend proceeding with the primary lens recommendations directly."
 
+## BEAR Integration Mode
+
+When invoked on a BEAR recommendation package (a file named `recommendation-package.md` produced after BEAR Phase 2), seal-options assesses each proposed recommendation for safety. This is the recommendation safety gate described in the BEAR-SEAL integration schema.
+
+### What changes
+
+- **Input:** BEAR's recommendation package with proposed recommendations, each carrying its finding dependencies and hypothesis dependency. Instead of decisions flagged by a SEAL Phase 2 primary lens.
+- **Goal:** Determine the safety tier for each recommendation: act_now, test_first, or investigate.
+- **Output:** SEAL safety assessment blocks written into the recommendation package, instead of a Real Options addendum to a SEAL working document.
+
+### Process for BEAR recommendation packages
+
+#### Step 1: Read the recommendation package and evidence package
+
+Read both files:
+- The recommendation package: each R-NNN with its dependencies
+- The evidence package: the graded findings and hypothesis landscape (needed to evaluate whether the recommendation's hypothesis dependency is well-supported)
+
+For each recommendation, note:
+- Which findings support it (and their SEAL tiers)
+- Which hypothesis must be true for the recommendation to make sense
+- How that hypothesis scored in the SEAL hypothesis landscape
+
+#### Step 2: Assess each recommendation
+
+For each recommendation, evaluate using the core Real Options concepts:
+
+**Reversibility:**
+```
+- Reversibility: {reversible | partially_reversible | irreversible}
+- Reversibility rationale: {What can be undone, what can't. For ad campaign changes: can the campaign be reactivated? Will algorithm learning/quality score be lost? Will competitors fill the auction gap?}
+```
+
+**Cost if wrong:**
+```
+- Cost if wrong:
+  - Scenario: {What happens if the hypothesis the recommendation depends on turns out to be incorrect. Be specific -- name the alternative hypothesis and trace what happens.}
+  - Severity: {low | medium | high | critical}
+  - Probability: {estimated with basis | unknown}
+  - Asymmetry: {bounded_upside_bounded_downside | bounded_upside_unbounded_downside | unbounded_upside_bounded_downside}
+```
+
+**Kill criteria:**
+```
+- Kill criteria:
+  1. {Observable metric + threshold + timeframe that should trigger reversal. Must be concrete: "If brand search volume drops >15% within 4 weeks" not "if things get worse"}
+  2. {Second criterion if applicable}
+```
+
+**Premature commitment check:**
+```
+- Premature commitment check:
+  - Is premature: {yes | no}
+  - Rationale: {Is there a cheaper probe that could generate the information needed to make this decision with more confidence? Reference discriminating tests from the hypothesis landscape if applicable.}
+  - What to do instead: {If premature, what experiment or data collection should happen first.}
+```
+
+#### Step 3: Assign safety tiers
+
+Based on the assessment, assign each recommendation a safety tier:
+
+| Tier | Criteria |
+|---|---|
+| act_now | Supported by Tier 1/2 findings. Clear or Complicated domain. Safe under all plausible hypotheses from the hypothesis landscape. Reversible or low cost-if-wrong. |
+| test_first | Mixed evidence tiers. Complex domain for key supporting findings. OR the recommendation would be harmful under a plausible alternative hypothesis. A discriminating test exists and should run first. |
+| investigate | Supported primarily by Tier 3 findings. OR insufficient data to evaluate the hypothesis. OR the recommendation requires data that doesn't exist yet. |
+
+```
+- Safety tier: {act_now | test_first | investigate}
+- Safety rationale: {Why this tier. Reference specific evidence tiers, Cynefin domains, and hypothesis dependencies. This rationale appears in the client deliverable, so it must be clear.}
+```
+
+#### Step 4: Write the safety assessments
+
+Fill in the `SEAL safety assessment` block for each recommendation in the recommendation package file. Also produce a summary:
+
+```
+### Recommendation safety summary
+
+| Recommendation | Safety tier | Key dependency | Risk if wrong |
+|---|---|---|---|
+| R-001: {summary} | {tier} | {hypothesis it depends on} | {one-line cost-if-wrong} |
+| R-002: {summary} | {tier} | {hypothesis} | {one-line} |
+
+Act Now: {count}
+Test First: {count}
+Investigate: {count}
+```
+
+### What does NOT change
+
+- All core Real Options concepts (reversibility, last responsible moment, staging, kill criteria, asymmetric payoffs, expiration) apply identically
+- You still NEVER make decisions for the human
+- You still NEVER skip kill criteria
+- You still NEVER present "wait and see" without specifying what information will be gathered
+- The constraint against expanding scope beyond referred items still holds: assess what BEAR proposed, don't add recommendations
+
+### Industry context
+
+BEAR provides industry context in its findings. Use it. The reversibility of pausing a Google Ads campaign is different from the reversibility of canceling a product launch. The cost-if-wrong for an attribution hypothesis depends on the account's revenue mix. BEAR's domain knowledge makes your assessment more accurate.
+
+### Session resolution in BEAR mode
+
+Same as other SEAL skills in BEAR mode: work within the BEAR engagement folder. The recommendation package is at `{client_root}/{client_prefix}{clientname}/bear/bear{YYYYMMDD}/recommendation-package.md`.
+
+---
+
 ## Usage Examples
 
 ```
@@ -319,4 +426,5 @@ Save the updated document in the run folder.
 "/seal-options — the primary lens flagged the vendor contract and the market entry timing as needing deeper evaluation"
 "/seal-options — evaluate all flagged decisions from Phase 2"
 "/seal-options — leadership wants to commit to the 3-year contract the primary lens flagged"
+"/seal-options — assess the recommendation package at 06-Clients/cli-etraintoday/bear/bear20260410/recommendation-package.md"
 ```
